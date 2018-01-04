@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#29b6f6</color>
+    <color name="colorPrimaryDark">#29b6f6</color>
+    <color name="colorAccent">#FFF</color>
+
+    <color name="bgHome">#29b6f6</color>
+
+    <color name="bgListOdd">#29b6f6</color>
+    <color name="bgListEven">#4FC3F7</color>
+
+    <color name="colorTextHome">#FFF</color>
+    <color name="colorTextDetails">#FFF</color>
+
+</resources>

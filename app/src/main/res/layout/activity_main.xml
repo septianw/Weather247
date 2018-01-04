@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgHome"
+    android:orientation="vertical"
+    tools:context="com.solusi247.weather247.MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Friday, 03/02/2018\n 15:00"
+        android:textColor="@color/colorTextDetails"
+        android:textSize="20sp" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_weather_now"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".5" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".5" />
+
+        <ImageView
+            android:id="@+id/iv_icon_weather"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_thunderstorm_white"
+            app:layout_constraintBottom_toBottomOf="@id/guideline_horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/guideline_vertical"
+            app:layout_constraintTop_toTopOf="@id/guideline_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thunderstorm"
+            android:textColor="@color/colorTextDetails"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/guideline_vertical"
+            app:layout_constraintTop_toBottomOf="@id/iv_icon_weather" />
+
+        <ImageView
+            android:id="@+id/iv_icon_temperature"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_temperature_white"
+            app:layout_constraintLeft_toRightOf="@id/guideline_vertical"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="28 \u2103"
+            android:textColor="@color/colorTextDetails"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_icon_temperature"
+            app:layout_constraintLeft_toRightOf="@id/iv_icon_temperature"
+            app:layout_constraintTop_toTopOf="@id/iv_icon_temperature" />
+
+        <ImageView
+            android:id="@+id/iv_icon_pressure"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_pressure"
+            android:tint="@android:color/white"
+            app:layout_constraintLeft_toRightOf="@id/guideline_vertical"
+            app:layout_constraintTop_toBottomOf="@id/iv_icon_temperature" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="998 hPa"
+            android:textColor="@color/colorTextDetails"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_icon_pressure"
+            app:layout_constraintLeft_toRightOf="@id/iv_icon_pressure"
+            app:layout_constraintTop_toTopOf="@id/iv_icon_pressure" />
+
+        <ImageView
+            android:id="@+id/iv_icon_humidity"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_humidity"
+            android:tint="@android:color/white"
+            app:layout_constraintLeft_toRightOf="@id/guideline_vertical"
+            app:layout_constraintTop_toBottomOf="@id/iv_icon_pressure" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="97 %"
+            android:textColor="@color/colorTextDetails"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@id/iv_icon_humidity"
+            app:layout_constraintLeft_toRightOf="@id/iv_icon_humidity"
+            app:layout_constraintTop_toTopOf="@id/iv_icon_humidity" />
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorTextDetails" />
+
+    <TextView
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Last 6 weather info"
+        android:textColor="@color/colorTextDetails" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_last_weather"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+</LinearLayout>
