@@ -16,6 +16,7 @@ class SplashActivity : AppCompatActivity(), SplashListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        // Declare activity presenter
         val presenter = SplashPresenter(this)
 
         // Used to hide status bar

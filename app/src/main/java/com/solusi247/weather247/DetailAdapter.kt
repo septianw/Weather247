@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 
+import kotlinx.android.synthetic.main.list_weather_item.view.*
+
 class DetailAdapter(val context: Context) : RecyclerView.Adapter<DetailAdapter.WeatherViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
@@ -35,6 +37,7 @@ class DetailAdapter(val context: Context) : RecyclerView.Adapter<DetailAdapter.W
             holder.tvDescription.text = "Rainy"
         }
         holder.tvTime.text = "${20 - position}:00"
+
         holder.tvDate.text = "Saturday\n21/12/2018"
         holder.tvTemperature.text = "28\u2103"
         holder.tvPressure.text = "998 hPa"
@@ -60,15 +63,15 @@ class DetailAdapter(val context: Context) : RecyclerView.Adapter<DetailAdapter.W
         val tvHumidity: TextView
 
         init {
-            listWeather = itemView.findViewById(R.id.list_weather)
-            ivIconWeather = itemView.findViewById(R.id.iv_icon_weather)
-            tvDescription = itemView.findViewById(R.id.tv_description)
-            tvTime = itemView.findViewById(R.id.tv_time)
-            tvDate = itemView.findViewById(R.id.tv_date)
-            tvTemperature = itemView.findViewById(R.id.tv_temperature)
-            tvPressure = itemView.findViewById(R.id.tv_pressure)
-            tvHumidity = itemView.findViewById(R.id.tv_humidity)
-
+            listWeather = itemView.listWeather
+            ivIconWeather = itemView.ivIconWeather
+            tvDescription = itemView.tvDescription
+            tvTime = itemView.tvTime
+            tvDate = itemView.tvDate
+            tvTemperature = itemView.tvTemperature
+            tvPressure = itemView.tvPressure
+            tvHumidity = itemView.tvHumidity
         }
+
     }
 }

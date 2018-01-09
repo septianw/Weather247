@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cv_weather_item"
+    android:id="@+id/cvWeatherItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
-    android:foreground="?attr/selectableItemBackgroundBorderless"
     android:background="?attr/selectableItemBackgroundBorderless"
     android:clickable="true"
-    android:focusable="true">
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackgroundBorderless">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,13 +18,13 @@
         android:padding="4dp">
 
         <ImageView
-            android:id="@+id/iv_icon_weather"
+            android:id="@+id/ivIconWeather"
             android:layout_width="48dp"
             android:layout_height="48dp"
             tools:src="@drawable/ic_thunderstorm" />
 
         <TextView
-            android:id="@+id/tv_day"
+            android:id="@+id/tvDay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Friday" />

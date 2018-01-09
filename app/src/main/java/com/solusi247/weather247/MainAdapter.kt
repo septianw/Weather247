@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import kotlinx.android.synthetic.main.last_weather_item.view.*
 
 class MainAdapter(val context: Context, val listener: LastWeatherListener) : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
@@ -49,9 +50,9 @@ class MainAdapter(val context: Context, val listener: LastWeatherListener) : Rec
         val tvDay: TextView
 
         init {
-            cvWeather = itemView.findViewById(R.id.cv_weather_item)
-            ivIconWeather = itemView.findViewById(R.id.iv_icon_weather)
-            tvDay = itemView.findViewById(R.id.tv_day)
+            cvWeather = itemView.cvWeatherItem
+            ivIconWeather = itemView.ivIconWeather
+            tvDay = itemView.tvDay
         }
     }
 
