@@ -5,7 +5,7 @@ import com.solusi247.weather247.view.SplashView
 class SplashPresenter(val view: SplashView) {
 
     fun loadSplash() {
-        val duration = 2000L
+        val duration = 1500L
         view.showSplashScreen(duration)
     }
 
