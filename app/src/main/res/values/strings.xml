@@ -12,6 +12,7 @@
     <string name="sunny">Sunny</string>
     <string name="thunderstorm">Thunderstorm</string>
 
-    <!-- List problems-->
+    <!--                List problems                       -->
+    <string name="result_error">Failed to load data</string>
     <string name="problem_server">Cannot getting data from server</string>
 </resources>

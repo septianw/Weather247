@@ -30,10 +30,4 @@
             tools:text="Friday" />
     </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/pbLoading"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_gravity="center"
-        android:visibility="invisible" />
 </android.support.v7.widget.CardView>
