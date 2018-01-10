@@ -1,9 +1,7 @@
 package com.solusi247.weather247.service
 
-import com.solusi247.weather247.model.DetailResponseModel
-import com.solusi247.weather247.model.WeatherResponseModel
+import com.solusi247.weather247.model.ResponseModel
 import io.reactivex.Observable
-import io.reactivex.Scheduler
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -15,10 +13,10 @@ import retrofit2.http.Path
 interface ApiService {
 
     @GET("api/weather")
-    fun getAllWeather(): Observable<WeatherResponseModel>
+    fun getAllWeather(): Observable<ResponseModel.Weather>
 
     @GET("api/weather/weather_details/{date}")
-    fun getWeatherDetails(@Path("date") date: String) : Observable<DetailResponseModel>
+    fun getWeatherDetails(@Path("date") date: String): Observable<ResponseModel.DetailWeather>
 
     companion object Factory {
 

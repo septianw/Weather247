@@ -11,4 +11,7 @@
     <string name="rainy">Rainy</string>
     <string name="sunny">Sunny</string>
     <string name="thunderstorm">Thunderstorm</string>
+
+    <!-- List problems-->
+    <string name="problem_server">Cannot getting data from server</string>
 </resources>

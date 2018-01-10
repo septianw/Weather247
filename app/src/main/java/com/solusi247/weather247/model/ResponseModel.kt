@@ -1,38 +1,37 @@
 package com.solusi247.weather247.model
 
-data class ResponseModel(
-        val error: Boolean,
-        val message: String
-)
+object ResponseModel {
 
-data class WeatherResponseModel(
-        val error: Boolean,
-        val message: String,
-        val data: List<DataDetailWeather>
-)
+    data class Weather(
+            val error: Boolean,
+            val message: String,
+            val data: List<DataWeather>
+    )
 
-data class DetailResponseModel(
-        val error: Boolean,
-        val message: String,
-        val data: List<DataWeather>
-)
+    data class DetailWeather(
+            val error: Boolean,
+            val message: String,
+            val data: List<DataDetailWeather>
+    )
 
-data class DataWeather(
-        val id: Int,
-        val weather: String,
-        val day: String,
-        val date: String,
-        val temperature: String,
-        val pressure: String,
-        val humidity: String
-)
+    data class DataWeather(
+            val id: Int,
+            val weather: String,
+            val day: String,
+            val date: String,
+            val temperature: String,
+            val pressure: String,
+            val humidity: String
+    )
 
-data class DataDetailWeather(
-        val id: Int,
-        val weather: String,
-        val day: String,
-        val date: String,
-        val temperature: String,
-        val pressure: String,
-        val humidity: String
-)
+    data class DataDetailWeather(
+            val id: Int,
+            val weather: String,
+            val day: String,
+            val date: String,
+            val time: String,
+            val temperature: String,
+            val pressure: String,
+            val humidity: String
+    )
+}

@@ -4,20 +4,23 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
-import android.widget.Toast
-import com.solusi247.weather247.model.DataDetailWeather
+import com.solusi247.weather247.model.ResponseModel
 import com.solusi247.weather247.service.ApiService
+import com.solusi247.weather247.utils.Constant
+import com.solusi247.weather247.utils.Message
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity(), LastWeatherListener {
-
+class MainActivity : AppCompatActivity(), MainListener, LastWeatherListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Declare activity presenter
+        val presenter = MainPresenter(this)
 
         supportActionBar?.elevation = 1f
 
@@ -32,22 +35,27 @@ class MainActivity : AppCompatActivity(), LastWeatherListener {
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                         { result ->
-                            if (!result.error) setData(result.data[0]) else showToast(result.message)
+                            Message.showToast(this, Constant.PROBLEM_SERVER)
+                            if (!result.error) setData(result.data[0]) else Message.showToast(this, result.message)
                         },
-                        { t ->
-                            t.printStackTrace()
-                            showToast("Error server")
+                        { error ->
+                            error.printStackTrace()
+                            Message.showToast(this, Constant.PROBLEM_SERVER)
                         }
                 )
 
         clWeatherNow.setOnClickListener { goToDetail() }
     }
 
+    /******************************Last Weather Listener*************************/
     override fun goToDetail() {
         startActivity(Intent(this, DetailActivity::class.java))
     }
 
-    fun setData(model: DataDetailWeather) {
+    /***************************End of Last Weather Listener*********************/
+
+    fun setData(model: ResponseModel.DataWeather) {
+        val temperature = "${model.temperature}\u2103"
         ivIconWeather.setImageResource(
                 when (model.weather) {
                     "Thunderstorm" -> R.drawable.ic_thunderstorm_white
@@ -59,13 +67,9 @@ class MainActivity : AppCompatActivity(), LastWeatherListener {
                 }
         )
         tvDescription.text = model.weather
-        tvTemperature.text = "${model.temperature}\u2103"
-        tvPressure.text = "${model.pressure}hPa"
-        tvHumidity.text = "${model.humidity}%"
-    }
-
-    fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+        tvTemperature.text = model.temperature
+        tvPressure.text = model.pressure
+        tvHumidity.text = model.humidity
     }
 
 }
