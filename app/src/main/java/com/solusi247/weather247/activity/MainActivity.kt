@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
-import com.solusi247.weather247.DetailActivity
 import com.solusi247.weather247.R
 import com.solusi247.weather247.adapter.MainAdapter
 import com.solusi247.weather247.listener.LastWeatherListener
@@ -44,7 +43,9 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener {
         tvTemperature.text = dataWeather.temperature
         tvPressure.text = dataWeather.pressure
         tvHumidity.text = dataWeather.humidity
-        clWeatherNow.setOnClickListener { goToDetail(dataWeather.date) }
+        clWeatherNow.setOnClickListener {
+            goToDetail(dataWeather.date)
+        }
     }
 
     override fun onLastWeather(dataWeathers: List<ResponseModel.DataWeather>) {
@@ -62,5 +63,4 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener {
         startActivity(intentToDetail)
     }
     /***************************End of Last Weather Listener*********************/
-
 }

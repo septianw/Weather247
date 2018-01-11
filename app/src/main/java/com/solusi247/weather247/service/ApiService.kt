@@ -15,7 +15,7 @@ interface ApiService {
     @GET("api/weather")
     fun getAllWeather(): Observable<ResponseModel.Weather>
 
-    @GET("api/weather/weather_details/{date}")
+    @GET("api/weather/weather_detail/date/{date}")
     fun getWeatherDetails(@Path("date") date: String): Observable<ResponseModel.DetailWeather>
 
     companion object Factory {
