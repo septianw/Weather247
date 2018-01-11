@@ -1,4 +1,4 @@
-package com.solusi247.weather247.model
+package com.solusi247.weather247.module.model
 
 object ResponseModel {
 

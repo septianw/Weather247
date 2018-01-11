@@ -1,6 +1,6 @@
-package com.solusi247.weather247.view
+package com.solusi247.weather247.module.view
 
-import com.solusi247.weather247.model.ResponseModel
+import com.solusi247.weather247.module.model.ResponseModel
 
 interface MainView {
 

@@ -1,6 +1,6 @@
 package com.solusi247.weather247.service
 
-import com.solusi247.weather247.model.ResponseModel
+import com.solusi247.weather247.module.model.ResponseModel
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

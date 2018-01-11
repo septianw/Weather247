@@ -1,17 +1,16 @@
-package com.solusi247.weather247.presenter
+package com.solusi247.weather247.module.presenter
 
 import com.solusi247.weather247.Weather247
-import com.solusi247.weather247.model.ResponseModel
+import com.solusi247.weather247.module.model.ResponseModel
+import com.solusi247.weather247.module.view.MainView
 import com.solusi247.weather247.service.ApiService
-import com.solusi247.weather247.utils.Constant
-import com.solusi247.weather247.utils.Message
-import com.solusi247.weather247.view.MainView
+import com.solusi247.weather247.utils.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 class MainPresenter(val view: MainView) {
 
-    var apiService: ApiService
+    val apiService: ApiService
 
     init {
         apiService = ApiService.create()
@@ -47,8 +46,8 @@ class MainPresenter(val view: MainView) {
     }
 
     fun addUnits(dataWeather: ResponseModel.DataWeather) {
-        dataWeather.temperature = "${dataWeather.temperature}\u2103"
-        dataWeather.pressure = "${dataWeather.pressure} hPa"
-        dataWeather.humidity = "${dataWeather.humidity}%"
+        dataWeather.temperature = dataWeather.temperature.addUnitTemperature()
+        dataWeather.pressure = dataWeather.pressure.addUnitPressure()
+        dataWeather.humidity = dataWeather.humidity.addUnitHumidity()
     }
 }

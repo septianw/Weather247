@@ -4,6 +4,8 @@
     <string name="weahter_details">Weather Details</string>
 
     <string name="today">Today</string>
+    <string name="date">%s\n%s</string>
+    <string name="last_weather">Last %s weather(s) info</string>
 
     <!--     List weather supported in weather247     -->
     <string name="cloudy">Cloudy</string>

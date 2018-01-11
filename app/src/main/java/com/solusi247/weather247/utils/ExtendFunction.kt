@@ -19,3 +19,9 @@ fun String.convertToWeatherIcon() = when (this) {
     "Rainy" -> R.drawable.ic_rainy
     else -> 0
 }
+
+fun String.addUnitTemperature() = "$this\u2103"
+
+fun String.addUnitPressure() = "${this}hPa"
+
+fun String.addUnitHumidity() = "$this%"

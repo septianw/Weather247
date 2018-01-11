@@ -1,4 +1,4 @@
-package com.solusi247.weather247.view
+package com.solusi247.weather247.module.view
 
 interface SplashView {
 

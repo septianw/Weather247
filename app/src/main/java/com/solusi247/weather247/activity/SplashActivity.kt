@@ -6,8 +6,8 @@ import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.solusi247.weather247.R
-import com.solusi247.weather247.presenter.SplashPresenter
-import com.solusi247.weather247.view.SplashView
+import com.solusi247.weather247.module.presenter.SplashPresenter
+import com.solusi247.weather247.module.view.SplashView
 
 class SplashActivity : AppCompatActivity(), SplashView {
 
@@ -31,7 +31,9 @@ class SplashActivity : AppCompatActivity(), SplashView {
         presenter.loadSplash()
     }
 
-    /**************************************View*******************************************/
+    /***************************************************************************************/
+    /**************************************   View   ***************************************/
+    /***************************************************************************************/
     override fun showSplashScreen(duration: Long) {
         Handler().postDelayed({
             val intentToMain = Intent(this, MainActivity::class.java)
@@ -39,5 +41,5 @@ class SplashActivity : AppCompatActivity(), SplashView {
             finish()
         }, duration)
     }
-    /***********************************End of View****************************************/
+    /*************************************End of View****************************************/
 }

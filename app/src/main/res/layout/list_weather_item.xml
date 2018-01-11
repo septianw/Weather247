@@ -6,16 +6,26 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp"
-    android:paddingTop="8dp">
+    android:padding="8dp">
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".4" />
+        app:layout_constraintGuide_percent=".45" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="32dp"
+        android:layout_marginBottom="@dimen/detail_margin_vertical"
+        android:background="@color/colorTextDetails"
+        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/guideline" />
 
     <TextView
         android:id="@+id/tvTime"
@@ -23,7 +33,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorTextDetails"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintBottom_toTopOf="@id/view"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -33,9 +43,10 @@
         android:id="@+id/tvDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/detail_margin_vertical"
         android:textColor="@color/colorTextDetails"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintBottom_toTopOf="@id/view"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/tvTime"
         tools:text="Thunderstorm" />
@@ -45,7 +56,6 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         app:layout_constraintBottom_toTopOf="@id/tvDescription"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/tvTime"
         tools:src="@drawable/ic_thunderstorm_white" />
@@ -58,7 +68,7 @@
         android:textAlignment="textEnd"
         android:textColor="@color/colorTextDetails"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@id/guideline"
+        app:layout_constraintBottom_toTopOf="@id/view"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Saturday\n12/6/2018" />
@@ -81,7 +91,7 @@
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="@id/guidelineTemperature"
         app:layout_constraintRight_toRightOf="@id/guidelineTemperature"
-        app:layout_constraintTop_toBottomOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/view"
         tools:text="28 \u2103" />
 
     <android.support.constraint.Guideline
@@ -102,7 +112,7 @@
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="@id/guidelinePressure"
         app:layout_constraintRight_toRightOf="@id/guidelinePressure"
-        app:layout_constraintTop_toBottomOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/view"
         tools:text="998 hPa" />
 
     <android.support.constraint.Guideline
@@ -123,7 +133,7 @@
         android:textSize="20sp"
         app:layout_constraintLeft_toLeftOf="@id/guidelineHumidity"
         app:layout_constraintRight_toRightOf="@id/guidelineHumidity"
-        app:layout_constraintTop_toBottomOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/view"
         tools:text="97 %" />
 
 </android.support.constraint.ConstraintLayout>

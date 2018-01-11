@@ -10,12 +10,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.solusi247.weather247.R
 import com.solusi247.weather247.listener.LastWeatherListener
-import com.solusi247.weather247.model.ResponseModel
+import com.solusi247.weather247.module.model.ResponseModel
 import com.solusi247.weather247.utils.convertToWeatherIcon
 import kotlinx.android.synthetic.main.last_weather_item.view.*
 
-class MainAdapter(val context: Context, val dataWeather: List<ResponseModel.DataWeather>,
-                  val listener: LastWeatherListener) : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
+class MainAdapter(val context: Context,
+                  val dataWeathers: List<ResponseModel.DataWeather>,
+                  val listener: LastWeatherListener)
+    : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MainViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.last_weather_item, parent, false)
@@ -24,16 +26,12 @@ class MainAdapter(val context: Context, val dataWeather: List<ResponseModel.Data
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         with(holder) {
-            bind(dataWeather[position + 1])
-            cvWeather.setOnClickListener {
-                listener.goToDetail(dataWeather[position + 1].date)
-            }
+            bind(dataWeathers[position + 1])
+            cvWeather.setOnClickListener { listener.goToDetail(dataWeathers[position + 1].date) }
         }
     }
 
-    override fun getItemCount(): Int {
-        return 6
-    }
+    override fun getItemCount() = dataWeathers.size - 1
 
     class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cvWeather: CardView
