@@ -31,16 +31,16 @@ class MainPresenter(val view: MainView) {
                                     view.onLastWeather(result.data)
                                 } else {
                                     // Connection success but error in result
-                                    Message.showToast(Weather247.context, result.message)
+                                    Message.showToast(Weather247.context, result.message, Message.ERROR)
                                 }
                             } catch (e: Exception) {
                                 e.printStackTrace()
-                                Message.showToast(Weather247.context, Constant.RESULT_ERROR)
+                                Message.showToast(Weather247.context, Constant.RESULT_ERROR, Message.ERROR)
                             }
                         },
                         { error ->
                             error.printStackTrace()
-                            Message.showToast(Weather247.context, Constant.PROBLEM_SERVER)
+                            Message.showToast(Weather247.context, Constant.PROBLEM_SERVER, Message.ERROR)
                         }
                 )
     }
