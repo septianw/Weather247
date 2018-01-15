@@ -19,6 +19,7 @@ object ResponseModel {
             val weather: String,
             val day: String,
             val date: String,
+            val time: String,
             var temperature: String,
             var pressure: String,
             var humidity: String

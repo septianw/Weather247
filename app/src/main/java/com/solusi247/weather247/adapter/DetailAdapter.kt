@@ -11,9 +11,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.solusi247.weather247.R
 import com.solusi247.weather247.module.model.ResponseModel
-import com.solusi247.weather247.utils.addUnitHumidity
-import com.solusi247.weather247.utils.addUnitPressure
-import com.solusi247.weather247.utils.addUnitTemperature
 import com.solusi247.weather247.utils.convertToWeatherIconWhite
 import kotlinx.android.synthetic.main.list_weather_item.view.*
 
@@ -65,9 +62,9 @@ class DetailAdapter(val context: Context,
             tvDescription.text = dataDetailWeather.weather
             tvTime.text = dataDetailWeather.time
             tvDate.text = String.format(itemView.context.getString(R.string.date), dataDetailWeather.day, dataDetailWeather.date)
-            tvTemperature.text = dataDetailWeather.temperature.addUnitTemperature()
-            tvPressure.text = dataDetailWeather.pressure.addUnitPressure()
-            tvHumidity.text = dataDetailWeather.humidity.addUnitHumidity()
+            tvTemperature.text = String.format(itemView.context.getString(R.string.temperature), dataDetailWeather.temperature)
+            tvPressure.text = String.format(itemView.context.getString(R.string.pressure), dataDetailWeather.pressure)
+            tvHumidity.text = String.format(itemView.context.getString(R.string.humidity), dataDetailWeather.humidity)
         }
     }
 }

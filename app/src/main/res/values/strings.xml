@@ -3,9 +3,14 @@
 
     <string name="weahter_details">Weather Details</string>
 
-    <string name="today">Today</string>
+    <string name="last_update">Last Updated : %s, %s</string>
     <string name="date">%s\n%s</string>
-    <string name="last_weather">Last %s weather(s) info</string>
+    <string name="temperature">%s\u2103</string>
+    <string name="humidity">%s%%</string>
+    <string name="pressure">%shPa</string>
+    <string name="past_weather">This week weather info</string>
+
+    <string name="default_location">Yogyakarta, Indonesia</string>
 
     <!--     List weather supported in weather247     -->
     <string name="cloudy">Cloudy</string>

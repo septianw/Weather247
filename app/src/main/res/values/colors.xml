@@ -9,7 +9,7 @@
     <color name="bgListOdd">#29b6f6</color>
     <color name="bgListEven">#4FC3F7</color>
 
-    <color name="colorTextHome">#FFF</color>
+    <color name="colorTextHome">#29b6f6</color>
     <color name="colorTextDetails">#FFF</color>
 
     <color name="white">#FFF</color>
