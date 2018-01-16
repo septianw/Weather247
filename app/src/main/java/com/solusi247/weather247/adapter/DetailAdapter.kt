@@ -11,7 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.solusi247.weather247.R
 import com.solusi247.weather247.module.model.ResponseModel
-import com.solusi247.weather247.utils.convertToWeatherIconWhite
+import com.solusi247.weather247.utils.convertToWeatherIcon
 import kotlinx.android.synthetic.main.list_weather_item.view.*
 
 class DetailAdapter(val context: Context,
@@ -58,7 +58,7 @@ class DetailAdapter(val context: Context,
         }
 
         fun bind(dataDetailWeather: ResponseModel.DataDetailWeather) {
-            ivIconWeather.setImageResource(dataDetailWeather.weather.convertToWeatherIconWhite())
+            ivIconWeather.setImageResource(dataDetailWeather.weather.convertToWeatherIcon())
             tvDescription.text = dataDetailWeather.weather
             tvTime.text = dataDetailWeather.time
             tvDate.text = String.format(itemView.context.getString(R.string.date), dataDetailWeather.day, dataDetailWeather.date)

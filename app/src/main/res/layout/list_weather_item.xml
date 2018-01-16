@@ -5,7 +5,7 @@
     android:id="@+id/listWeather"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorPrimary"
+    android:background="@color/bgListOdd"
     android:padding="8dp">
 
     <android.support.constraint.Guideline
@@ -58,7 +58,7 @@
         app:layout_constraintBottom_toTopOf="@id/tvDescription"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/tvTime"
-        tools:src="@drawable/ic_thunderstorm_white" />
+        tools:src="@drawable/ic_thunderstorm" />
 
     <TextView
         android:id="@+id/tvDate"
@@ -85,7 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/detail_margin_vertical"
-        android:drawableTop="@drawable/ic_temperature_white"
+        android:drawableTop="@drawable/ic_temperature"
         android:gravity="center_horizontal"
         android:textColor="@color/colorTextDetails"
         android:textSize="20sp"
@@ -106,7 +106,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/detail_margin_vertical"
-        android:drawableTop="@drawable/ic_pressure_white"
+        android:drawableTop="@drawable/ic_pressure"
         android:gravity="center_horizontal"
         android:textColor="@color/colorTextDetails"
         android:textSize="20sp"
@@ -127,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/detail_margin_vertical"
-        android:drawableTop="@drawable/ic_humidity_white"
+        android:drawableTop="@drawable/ic_humidity"
         android:gravity="center_horizontal"
         android:textColor="@color/colorTextDetails"
         android:textSize="20sp"

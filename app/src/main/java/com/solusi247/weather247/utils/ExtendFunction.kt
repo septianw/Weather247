@@ -6,21 +6,21 @@ import com.solusi247.weather247.R
 import com.solusi247.weather247.Weather247
 import java.text.SimpleDateFormat
 
-fun String.convertToWeatherIconWhite() = when (this) {
-    Weather247.context.getString(R.string.thunderstorm) -> R.drawable.ic_thunderstorm_white
-    Weather247.context.getString(R.string.cloudy) -> R.drawable.ic_cloudy_white
-    Weather247.context.getString(R.string.partly_cloudy) -> R.drawable.ic_partly_cloudy_white
-    Weather247.context.getString(R.string.sunny) -> R.drawable.ic_sunny
-    Weather247.context.getString(R.string.rainy) -> R.drawable.ic_rainy_white
-    else -> 0
-}
-
 fun String.convertToWeatherIcon() = when (this) {
     Weather247.context.getString(R.string.thunderstorm) -> R.drawable.ic_thunderstorm
     Weather247.context.getString(R.string.cloudy) -> R.drawable.ic_cloudy
     Weather247.context.getString(R.string.partly_cloudy) -> R.drawable.ic_partly_cloudy
     Weather247.context.getString(R.string.sunny) -> R.drawable.ic_sunny
     Weather247.context.getString(R.string.rainy) -> R.drawable.ic_rainy
+    else -> 0
+}
+
+fun String.convertToLargeWeatherIcon() = when (this) {
+    Weather247.context.getString(R.string.thunderstorm) -> R.drawable.ic_thunderstorm_large
+    Weather247.context.getString(R.string.cloudy) -> R.drawable.ic_cloudy_large
+    Weather247.context.getString(R.string.partly_cloudy) -> R.drawable.ic_partly_cloudy_large
+    Weather247.context.getString(R.string.sunny) -> R.drawable.ic_sunny_large
+    Weather247.context.getString(R.string.rainy) -> R.drawable.ic_rainy_large
     else -> 0
 }
 

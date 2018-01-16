@@ -16,7 +16,7 @@ import com.solusi247.weather247.module.presenter.MainPresenter
 import com.solusi247.weather247.module.view.MainView
 import com.solusi247.weather247.utils.Message
 import com.solusi247.weather247.utils.changeFormatDate
-import com.solusi247.weather247.utils.convertToWeatherIcon
+import com.solusi247.weather247.utils.convertToLargeWeatherIcon
 import com.solusi247.weather247.utils.textAnimationIncrement
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
     }
 
     override fun onWeatherToday(dataWeather: ResponseModel.DataWeather) {
-        ivIconWeather.setImageResource(dataWeather.weather.convertToWeatherIcon())
+        ivIconWeather.setImageResource(dataWeather.weather.convertToLargeWeatherIcon())
         tvDescription.text = dataWeather.weather
         tvLocation.text = getString(R.string.default_location)
         tvDate.text = String.format(getString(R.string.last_update), dataWeather.date.changeFormatDate(), dataWeather.time)
