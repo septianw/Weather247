@@ -1,6 +1,7 @@
 package com.solusi247.weather247.activity
 
 import android.content.Intent
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
@@ -55,10 +56,15 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
     /***************************************************************************************/
 
     override fun showLoading() {
-        pbLoading.visibility = View.VISIBLE
+        pbLoading.setBackgroundResource(R.drawable.animation_drawable)
+        val anim = pbLoading.background as AnimationDrawable
+        val zoom = AnimationUtils.loadAnimation(applicationContext, R.anim.zoom_animation)
+        pbLoading.animation = zoom
+        anim.start()
     }
 
     override fun hideLoading() {
+        pbLoading.clearAnimation()
         pbLoading.visibility = View.INVISIBLE
     }
 

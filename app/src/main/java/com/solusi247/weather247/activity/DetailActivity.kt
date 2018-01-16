@@ -1,10 +1,12 @@
 package com.solusi247.weather247.activity
 
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.view.View
+import android.view.animation.AnimationUtils
 import com.solusi247.weather247.R
 import com.solusi247.weather247.adapter.DetailAdapter
 import com.solusi247.weather247.module.model.ResponseModel
@@ -40,10 +42,15 @@ class DetailActivity : AppCompatActivity(), DetailView {
     /**************************************   View   ***************************************/
     /***************************************************************************************/
     override fun showLoading() {
-        pbLoading.visibility = View.VISIBLE
+        pbLoading.setBackgroundResource(R.drawable.animation_drawable)
+        val anim = pbLoading.background as AnimationDrawable
+        val zoom = AnimationUtils.loadAnimation(applicationContext, R.anim.zoom_animation)
+        pbLoading.animation = zoom
+        anim.start()
     }
 
     override fun hideLoading() {
+        pbLoading.clearAnimation()
         pbLoading.visibility = View.INVISIBLE
     }
 
