@@ -5,7 +5,7 @@
     android:id="@+id/clWeatherNow"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/bgHome"
     android:orientation="vertical"
     tools:context="com.solusi247.weather247.activity.MainActivity">
 
@@ -18,8 +18,8 @@
         android:fontFamily="@font/bryant_medium_alt"
         android:textColor="@color/colorTextHome"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Thunderstorm" />
 
@@ -31,13 +31,14 @@
         android:layout_marginTop="@dimen/main_margin_vertical"
         android:fontFamily="@font/bryant_medium_alt"
         android:textColor="@color/colorTextHome"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvDescription"
         tools:text="Yogyakarta, Indonesia" />
 
     <TextView
         android:id="@+id/tvDate"
+        style="@style/Base.TextAppearance.AppCompat.Subhead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/main_margin_vertical"
@@ -63,7 +64,7 @@
         app:layout_constraintLeft_toLeftOf="@id/guidelineVertical"
         app:layout_constraintRight_toRightOf="@id/guidelineVertical"
         app:layout_constraintTop_toBottomOf="@id/tvDate"
-        tools:src="@drawable/ic_thunderstorm" />
+        tools:src="@drawable/ic_thunderstorm_large" />
 
     <TextView
         android:id="@+id/tvTemperature"
@@ -142,7 +143,7 @@
             android:layout_marginStart="@dimen/main_margin_horizontal"
             android:fontFamily="@font/bryant_medium_alt"
             android:textColor="@android:color/white"
-            tools:text="Last 6 weather(s) info" />
+            tools:text="@string/past_weather" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvLastWeather"
@@ -152,8 +153,8 @@
             tools:layout_height="88dp" />
     </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/pbLoading"
+    <ImageView
+        android:id="@+id/ivLoading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

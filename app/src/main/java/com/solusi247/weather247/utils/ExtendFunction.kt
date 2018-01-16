@@ -1,6 +1,10 @@
 package com.solusi247.weather247.utils
 
 import android.animation.ValueAnimator
+import android.graphics.drawable.AnimationDrawable
+import android.view.View
+import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import android.widget.TextView
 import com.solusi247.weather247.R
 import com.solusi247.weather247.Weather247
@@ -24,6 +28,26 @@ fun String.convertToLargeWeatherIcon() = when (this) {
     else -> 0
 }
 
+fun String.changeFormatDate(): String {
+    val date = SimpleDateFormat("yyyy-mm-dd").parse(this)
+    val dateString = SimpleDateFormat("dd MMM yyyy").format(date)
+    return dateString
+}
+
+fun ImageView.startCustomLoading() {
+    this.setBackgroundResource(R.drawable.loading_animation)
+    val anim = this.background as AnimationDrawable
+    val zoom = AnimationUtils.loadAnimation(Weather247.context, R.anim.zoom_in_out)
+    this.animation = zoom
+    this.visibility = View.VISIBLE
+    anim.start()
+}
+
+fun ImageView.endCustomLoading() {
+    this.clearAnimation()
+    this.visibility = View.INVISIBLE
+}
+
 fun TextView.textAnimationIncrement(number: Any, unit: String? = null) {
     val value = number.toString().toInt()
     val valueAnimator = ValueAnimator.ofInt(0, value)
@@ -35,8 +59,4 @@ fun TextView.textAnimationIncrement(number: Any, unit: String? = null) {
     valueAnimator.start()
 }
 
-fun String.changeFormatDate(): String {
-    val date = SimpleDateFormat("yyyy-mm-dd").parse(this)
-    val dateString = SimpleDateFormat("dd MMM yyyy").format(date)
-    return dateString
-}
+

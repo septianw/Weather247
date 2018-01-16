@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
-import android.view.View
 import com.solusi247.weather247.R
 import com.solusi247.weather247.adapter.DetailAdapter
 import com.solusi247.weather247.module.model.ResponseModel
 import com.solusi247.weather247.module.presenter.DetailPresenter
 import com.solusi247.weather247.module.view.DetailView
+import com.solusi247.weather247.utils.endCustomLoading
+import com.solusi247.weather247.utils.startCustomLoading
 import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : AppCompatActivity(), DetailView {
@@ -40,11 +41,11 @@ class DetailActivity : AppCompatActivity(), DetailView {
     /**************************************   View   ***************************************/
     /***************************************************************************************/
     override fun showLoading() {
-        pbLoading.visibility = View.VISIBLE
+        ivLoading.startCustomLoading()
     }
 
     override fun hideLoading() {
-        pbLoading.visibility = View.INVISIBLE
+        ivLoading.endCustomLoading()
     }
 
     override fun onListWeather(dataDetailWeathers: List<ResponseModel.DataDetailWeather>) {

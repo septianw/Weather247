@@ -26,7 +26,7 @@ class ArchView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
         paint.isAntiAlias = true
         paint.style = Paint.Style.FILL
-        paint.color = ContextCompat.getColor(context, R.color.white)
+        paint.color = ContextCompat.getColor(context, R.color.bgHome)
 
         path.moveTo(rect.top, rect.left)
         path.quadTo(rect.centerX(), rect.bottom, rect.right, rect.top)

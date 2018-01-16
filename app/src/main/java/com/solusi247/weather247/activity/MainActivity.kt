@@ -14,10 +14,7 @@ import com.solusi247.weather247.listener.LastWeatherListener
 import com.solusi247.weather247.module.model.ResponseModel
 import com.solusi247.weather247.module.presenter.MainPresenter
 import com.solusi247.weather247.module.view.MainView
-import com.solusi247.weather247.utils.Message
-import com.solusi247.weather247.utils.changeFormatDate
-import com.solusi247.weather247.utils.convertToLargeWeatherIcon
-import com.solusi247.weather247.utils.textAnimationIncrement
+import com.solusi247.weather247.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -55,11 +52,11 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
     /***************************************************************************************/
 
     override fun showLoading() {
-        pbLoading.visibility = View.VISIBLE
+        ivLoading.startCustomLoading()
     }
 
     override fun hideLoading() {
-        pbLoading.visibility = View.INVISIBLE
+        ivLoading.endCustomLoading()
     }
 
     override fun playAnimationWeatherToday() {
