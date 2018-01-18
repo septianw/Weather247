@@ -20,12 +20,12 @@ object Message {
             INFORMATION -> {
                 view.ivIcon.setImageResource(R.drawable.ic_info)
                 view.customToast.background = ContextCompat.getDrawable(context, R.drawable.custom_toast_info_background)
-                view.tvMessage.setTextColor(ContextCompat.getColor(context, R.color.message_info))
+                view.tvMessage.setTextColor(ContextCompat.getColor(context, R.color.messageInfo))
             }
             ERROR -> {
                 view.ivIcon.setImageResource(R.drawable.ic_error)
                 view.customToast.background = ContextCompat.getDrawable(context, R.drawable.custom_toast_error_background)
-                view.tvMessage.setTextColor(ContextCompat.getColor(context, R.color.message_error))
+                view.tvMessage.setTextColor(ContextCompat.getColor(context, R.color.messageError))
             }
         }
         view.tvMessage.text = message

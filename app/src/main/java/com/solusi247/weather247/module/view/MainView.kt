@@ -8,6 +8,8 @@ interface MainView {
 
     fun hideLoading()
 
+    fun showError()
+
     fun playAnimationWeatherToday()
 
     fun onWeatherToday(dataWeather: ResponseModel.DataWeather)

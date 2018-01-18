@@ -5,11 +5,16 @@
 
     <string name="last_update">Last Updated : %s, %s</string>
     <string name="date">%s\n%s</string>
-    <string name="temperature">%s\u2103</string>
-    <string name="humidity">%s%%</string>
-    <string name="pressure">%shPa</string>
+    <string name="temperature_text">%s\u2103</string>
+    <string name="humidity_text">%s%%</string>
+    <string name="pressure_text">%shPa</string>
     <string name="past_weather">This week weather info</string>
 
+    <!--     List location supported in weather247     -->
+    <string name="menu_graphic">Display graph</string>
+    <string name="menu_list">Display list</string>
+
+    <!--     List location supported in weather247     -->
     <string name="default_location">Yogyakarta, Indonesia</string>
 
     <!--     List weather supported in weather247     -->
@@ -18,6 +23,11 @@
     <string name="rainy">Rainy</string>
     <string name="sunny">Sunny</string>
     <string name="thunderstorm">Thunderstorm</string>
+
+    <!--     List attributes weather supported in weather247     -->
+    <string name="temperature_now">Temperature is %s</string>
+    <string name="humidity_now">Humidity is %s</string>
+    <string name="pressure_now">Pressure is %s</string>
 
     <!--                List problems                       -->
     <string name="result_error">Failed to load data</string>

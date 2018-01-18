@@ -16,9 +16,12 @@ import com.solusi247.weather247.module.presenter.MainPresenter
 import com.solusi247.weather247.module.view.MainView
 import com.solusi247.weather247.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.no_connection.*
 
 
 class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWeatherListener {
+
+    lateinit var presenter: MainPresenter
 
     lateinit var fadeIn: Animation
     lateinit var moveUp: Animation
@@ -28,7 +31,7 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         setContentView(R.layout.activity_main)
 
         fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
-        moveUp = AnimationUtils.loadAnimation(this, R.anim.move_up)
+        moveUp = AnimationUtils.loadAnimation(this, R.anim.move_up_in)
 
         /********************************Set layout************************************/
         val linearLayoutManager = LinearLayoutManager(this)
@@ -40,7 +43,7 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
 
 
         // Declare activity presenter
-        val presenter = MainPresenter(this)
+        presenter = MainPresenter(this)
 
         // Presenter load weather
         presenter.loadWeather()
@@ -57,6 +60,14 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
 
     override fun hideLoading() {
         ivLoading.endCustomLoading()
+    }
+
+    override fun showError() {
+        noConnection.visibility = View.VISIBLE
+        noConnection.setOnClickListener { _ ->
+            presenter.loadWeather()
+            noConnection.visibility = View.INVISIBLE
+        }
     }
 
     override fun playAnimationWeatherToday() {
@@ -82,9 +93,9 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         tvTemperature.textAnimationIncrement(dataWeather.temperature, "\u2103")
         tvPressure.textAnimationIncrement(dataWeather.pressure, "hPa")
         tvHumidity.textAnimationIncrement(dataWeather.humidity, "%")
-        tvTemperature.setOnClickListener { onTemperatureClicked() }
-        tvPressure.setOnClickListener { onPressureClicked() }
-        tvHumidity.setOnClickListener { onHumidityClicked() }
+        tvTemperature.setOnLongClickListener { onTemperatureClicked(); true }
+        tvPressure.setOnLongClickListener { onPressureClicked(); true }
+        tvHumidity.setOnLongClickListener { onHumidityClicked(); true }
     }
 
     override fun onLastWeather(dataWeathers: List<ResponseModel.DataWeather>) {
@@ -111,17 +122,17 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
     /***************************************************************************************/
 
     override fun onTemperatureClicked() {
-        val message = "Temperature now is ${tvTemperature.text}"
+        val message = String.format(getString(R.string.temperature_now), tvTemperature.text)
         Message.showToast(this, message, Message.INFORMATION)
     }
 
     override fun onHumidityClicked() {
-        val message = "Humidity now is ${tvHumidity.text}"
+        val message = String.format(getString(R.string.humidity_now), tvHumidity.text)
         Message.showToast(this, message, Message.INFORMATION)
     }
 
     override fun onPressureClicked() {
-        val message = "Pressure now is ${tvPressure.text}"
+        val message = String.format(getString(R.string.pressure_now), tvPressure.text)
         Message.showToast(this, message, Message.INFORMATION)
     }
     /******************************End of Attr Weather Listener******************************/

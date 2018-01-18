@@ -1,139 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/listWeather"
+    android:id="@+id/llWeather"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/bgListOdd"
-    android:padding="8dp">
+    android:background="@drawable/detail_background"
+    android:orientation="vertical">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/tvTime"
+            style="@style/TextAppearance.AppCompat.Title.Inverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="18sp"
+            tools:text="11:00" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Subtitle.Inverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvTime"
+            android:layout_marginStart="8dp"
+            tools:text="Thunderstorm" />
+
+        <ImageView
+            android:id="@+id/ivIconWeather"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
+            tools:src="@drawable/ic_thunderstorm" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/attrWeather"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".45" />
+        android:padding="8dp">
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="32dp"
-        android:layout_marginBottom="@dimen/detail_margin_vertical"
-        android:background="@color/colorTextDetails"
-        app:layout_constraintBottom_toTopOf="@id/guideline"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center_vertical">
 
-    <TextView
-        android:id="@+id/tvTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorTextDetails"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@id/view"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="11:00" />
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_temperature" />
 
-    <TextView
-        android:id="@+id/tvDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/detail_margin_vertical"
-        android:textColor="@color/colorTextDetails"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@id/view"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/tvTime"
-        tools:text="Thunderstorm" />
+            <TextView
+                android:id="@+id/tvTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="@color/textDetails"
+                android:textSize="18sp"
+                tools:text="26\u2103" />
 
-    <ImageView
-        android:id="@+id/ivIconWeather"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        app:layout_constraintBottom_toTopOf="@id/tvDescription"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/tvTime"
-        tools:src="@drawable/ic_thunderstorm" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/main_margin_horizontal"
-        android:textAlignment="textEnd"
-        android:textColor="@color/colorTextDetails"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@id/view"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Saturday\n12/6/2018" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:gravity="center_vertical">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineTemperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.2" />
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_pressure" />
 
-    <TextView
-        android:id="@+id/tvTemperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/detail_margin_vertical"
-        android:drawableTop="@drawable/ic_temperature"
-        android:gravity="center_horizontal"
-        android:textColor="@color/colorTextDetails"
-        android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="@id/guidelineTemperature"
-        app:layout_constraintRight_toRightOf="@id/guidelineTemperature"
-        app:layout_constraintTop_toBottomOf="@id/view"
-        tools:text="28 \u2103" />
+            <TextView
+                android:id="@+id/tvPressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/textDetails"
+                android:textSize="18sp"
+                tools:text="1023hPa" />
+        </LinearLayout>
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelinePressure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".5" />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:gravity="center_vertical">
 
-    <TextView
-        android:id="@+id/tvPressure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/detail_margin_vertical"
-        android:drawableTop="@drawable/ic_pressure"
-        android:gravity="center_horizontal"
-        android:textColor="@color/colorTextDetails"
-        android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="@id/guidelinePressure"
-        app:layout_constraintRight_toRightOf="@id/guidelinePressure"
-        app:layout_constraintTop_toBottomOf="@id/view"
-        tools:text="998 hPa" />
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_humidity" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineHumidity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.8" />
+            <TextView
+                android:id="@+id/tvHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/textDetails"
+                android:textSize="18sp"
+                tools:text="97 %" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvHumidity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/detail_margin_vertical"
-        android:drawableTop="@drawable/ic_humidity"
-        android:gravity="center_horizontal"
-        android:textColor="@color/colorTextDetails"
-        android:textSize="20sp"
-        app:layout_constraintLeft_toLeftOf="@id/guidelineHumidity"
-        app:layout_constraintRight_toRightOf="@id/guidelineHumidity"
-        app:layout_constraintTop_toBottomOf="@id/view"
-        tools:text="97 %" />
+    </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

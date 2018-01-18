@@ -35,10 +35,12 @@ class MainPresenter(val view: MainView) {
                                     view.onLastWeather(result.data)
                                 } else {
                                     // Connection success but error in result
+                                    view.showError()
                                     Message.showToast(context, result.message, Message.ERROR)
                                 }
                             } catch (e: Exception) {
                                 e.printStackTrace()
+                                view.showError()
                                 Message.showToast(context, Constant.RESULT_ERROR, Message.ERROR)
                             } finally {
                                 view.hideLoading()
@@ -46,6 +48,7 @@ class MainPresenter(val view: MainView) {
                         },
                         { error ->
                             error.printStackTrace()
+                            view.showError()
                             Message.showToast(context, Constant.PROBLEM_SERVER, Message.ERROR)
                             view.hideLoading()
                         }

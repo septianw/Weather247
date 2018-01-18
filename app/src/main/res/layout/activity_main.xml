@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/bryant_medium_alt"
-        android:textColor="@color/colorTextHome"
+        android:textColor="@color/textHome"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/main_margin_vertical"
         android:fontFamily="@font/bryant_medium_alt"
-        android:textColor="@color/colorTextHome"
+        android:textColor="@color/textHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvDescription"
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/main_margin_vertical"
         android:fontFamily="@font/bryant_medium_alt"
-        android:textColor="@color/colorTextHome"
+        android:textColor="@color/textHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvLocation"
@@ -75,7 +75,7 @@
         android:drawableTop="@drawable/ic_temperature"
         android:fontFamily="@font/bryant_medium_alt"
         android:gravity="center_horizontal"
-        android:textColor="@color/colorTextHome"
+        android:textColor="@color/textHome"
         android:textSize="24sp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@id/ivIconWeather"
@@ -92,7 +92,7 @@
         android:drawableTop="@drawable/ic_pressure"
         android:fontFamily="@font/bryant_medium_alt"
         android:gravity="center_horizontal"
-        android:textColor="@color/colorTextHome"
+        android:textColor="@color/textHome"
         android:textSize="24sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@id/tvTemperature"
@@ -110,7 +110,7 @@
         android:drawableTop="@drawable/ic_humidity"
         android:fontFamily="@font/bryant_medium_alt"
         android:gravity="center_horizontal"
-        android:textColor="@color/colorTextHome"
+        android:textColor="@color/textHome"
         android:textSize="24sp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@id/tvTemperature"
@@ -161,5 +161,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        layout="@layout/no_connection"
+        tools:visibility="invisible" />
 
 </android.support.constraint.ConstraintLayout>

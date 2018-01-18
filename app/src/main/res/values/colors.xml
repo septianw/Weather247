@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#29b6f6</color>
-    <color name="colorPrimaryDark">#29b6f6</color>
-    <color name="colorAccent">#FFF</color>
+    <color name="colorPrimary">#29B6FC</color>
+    <color name="colorPrimaryDark">#29B6FC</color>
+    <color name="colorAccent">#29B6FC</color>
 
     <color name="bgHome">#FFF</color>
 
-    <color name="bgListOdd">#F5F5F5</color>
-    <color name="bgListEven">#FAFAFA</color>
+    <color name="selectedDetail">#FFF</color>
+    <color name="unselectedDetail">#F5F5F5</color>
 
-    <color name="colorTextHome">#29B6F6</color>
-    <color name="colorTextDetails">#29B6F6</color>
+    <color name="textHome">#29B6FC</color>
+    <color name="textDetails">#000</color>
 
     <color name="white">#FFF</color>
 
-    <color name="message_info">#2196F3</color>
-    <color name="message_error">#FFF</color>
+    <color name="messageInfo">#29B6FC</color>
+    <color name="messageError">#FFF</color>
 
 </resources>
