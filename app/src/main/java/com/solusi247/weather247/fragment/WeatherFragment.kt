@@ -70,9 +70,7 @@ class WeatherFragment : Fragment(), WeatherView {
                 fragmentManager!!.beginTransaction()
                         .setCustomAnimations(
                                 R.animator.detail_flip_right_in,
-                                R.animator.detail_flip_right_out,
-                                R.animator.detail_flip_left_in,
-                                R.animator.detail_flip_left_out)
+                                R.animator.detail_flip_right_out)
                         .replace(R.id.container, GraphFragment())
                         .commit()
         }
