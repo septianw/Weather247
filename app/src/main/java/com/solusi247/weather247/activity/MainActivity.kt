@@ -17,6 +17,7 @@ import com.solusi247.weather247.module.view.MainView
 import com.solusi247.weather247.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.no_connection.*
+import kotlinx.android.synthetic.main.progress_loading.*
 
 
 class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWeatherListener {
@@ -66,7 +67,7 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         noConnection.visibility = View.VISIBLE
         noConnection.setOnClickListener { _ ->
             presenter.loadWeather()
-            noConnection.visibility = View.INVISIBLE
+            noConnection.visibility = View.GONE
         }
     }
 
@@ -106,19 +107,19 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
 
 
     /***************************************************************************************/
-    /*****************************   Last Weather Listener   *******************************/
+    /*****************************   Last WeatherFragment Listener   *******************************/
     /***************************************************************************************/
 
     override fun goToDetail(date: String) {
         val intentToDetail = Intent(this, DetailActivity::class.java)
-        intentToDetail.putExtra("date", date)
+        intentToDetail.putExtra(Constant.SHARED_DATE, date)
         startActivity(intentToDetail)
     }
-    /******************************End of Last Weather Listener******************************/
+    /******************************End of Last WeatherFragment Listener******************************/
 
 
     /***************************************************************************************/
-    /*****************************   Attr Weather Listener   *******************************/
+    /*****************************   Attr WeatherFragment Listener   *******************************/
     /***************************************************************************************/
 
     override fun onTemperatureClicked() {
@@ -135,5 +136,5 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         val message = String.format(getString(R.string.pressure_now), tvPressure.text)
         Message.showToast(this, message, Message.INFORMATION)
     }
-    /******************************End of Attr Weather Listener******************************/
+    /******************************End of Attr WeatherFragment Listener******************************/
 }

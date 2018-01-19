@@ -3,7 +3,7 @@
     android:fillAfter="true">
 
     <scale
-        android:duration="500"
+        android:duration="@integer/middle_animation"
         android:fromXScale="0.0"
         android:fromYScale="0.0"
         android:pivotX="50%"
@@ -13,7 +13,7 @@
         android:toYScale="1.5" />
 
     <scale
-        android:duration="500"
+        android:duration="@integer/middle_animation"
         android:fromXScale="1.5"
         android:fromYScale="1.5"
         android:pivotX="50%"

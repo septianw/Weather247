@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Weather247</string>
 
-    <string name="weahter_details">Weather Details</string>
+    <string name="weather_details">Weather Details</string>
 
     <string name="last_update">Last Updated : %s, %s</string>
     <string name="date">%s\n%s</string>

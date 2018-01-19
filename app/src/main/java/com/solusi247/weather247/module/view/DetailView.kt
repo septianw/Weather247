@@ -8,5 +8,7 @@ interface DetailView {
 
     fun hideLoading()
 
-    fun onListWeather(dataDetailWeathers: List<ResponseModel.DataDetailWeather>)
+    fun showError()
+
+    fun onWeatherLoaded(dataDetailWeathers: List<ResponseModel.DataDetailWeather>)
 }

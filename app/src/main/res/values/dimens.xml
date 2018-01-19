@@ -7,4 +7,5 @@
     <dimen name="detail_margin_vertical">8dp</dimen>
 
     <dimen name="z_detail">3dp</dimen>
+
 </resources>
