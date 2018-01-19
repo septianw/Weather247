@@ -1,6 +1,7 @@
 package com.solusi247.weather247.module.presenter
 
 import com.solusi247.weather247.Weather247
+import com.solusi247.weather247.module.model.ResponseModel
 import com.solusi247.weather247.module.view.DetailView
 import com.solusi247.weather247.service.ApiService
 import com.solusi247.weather247.utils.Constant
@@ -11,6 +12,8 @@ import io.reactivex.schedulers.Schedulers
 class DetailPresenter(val view: DetailView) {
 
     val apiService: ApiService
+
+    lateinit var data: List<ResponseModel.DataDetailWeather>
 
     init {
         apiService = ApiService.create()
@@ -26,13 +29,16 @@ class DetailPresenter(val view: DetailView) {
                             try {
                                 if (!result.error) {
                                     //Result successfull
-                                    view.onListWeather(result.data)
+                                    data = result.data
+                                    view.onWeatherLoaded(data)
                                 } else {
                                     // Connection success but error in result
+                                    view.showError()
                                     Message.showToast(Weather247.context, result.message, Message.ERROR)
                                 }
                             } catch (e: Exception) {
                                 e.printStackTrace()
+                                view.showError()
                                 Message.showToast(Weather247.context, Constant.RESULT_ERROR, Message.ERROR)
                             } finally {
                                 view.hideLoading()
@@ -40,6 +46,7 @@ class DetailPresenter(val view: DetailView) {
                         },
                         { error ->
                             error.printStackTrace()
+                            view.showError()
                             Message.showToast(Weather247.context, Constant.PROBLEM_SERVER, Message.ERROR)
                             view.hideLoading()
                         }

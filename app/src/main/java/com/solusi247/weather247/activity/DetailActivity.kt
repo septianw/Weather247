@@ -1,56 +1,46 @@
 package com.solusi247.weather247.activity
 
 import android.os.Bundle
-import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
-import android.view.Menu
 import android.view.MenuItem
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
+import android.view.View
 import com.solusi247.weather247.R
-import com.solusi247.weather247.adapter.DetailAdapter
+import com.solusi247.weather247.fragment.WeatherFragment
 import com.solusi247.weather247.module.model.ResponseModel
 import com.solusi247.weather247.module.presenter.DetailPresenter
 import com.solusi247.weather247.module.view.DetailView
-import com.solusi247.weather247.utils.Message
+import com.solusi247.weather247.utils.Constant
 import com.solusi247.weather247.utils.changeFormatDate
 import com.solusi247.weather247.utils.endCustomLoading
 import com.solusi247.weather247.utils.startCustomLoading
 import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.android.synthetic.main.no_connection.*
+import kotlinx.android.synthetic.main.progress_loading.*
 
 class DetailActivity : AppCompatActivity(), DetailView {
 
-    lateinit var zoomIn: Animation
+    lateinit var presenter: DetailPresenter
+    lateinit var date: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         overridePendingTransition(R.anim.move_up_in_500, R.anim.move_up_out_500)
         setContentView(R.layout.activity_detail)
 
-        zoomIn = AnimationUtils.loadAnimation(this, R.anim.zoom_in)
-
         /********************************Set layout************************************/
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
 
-        val date = intent.getStringExtra("date")
+        date = intent.getStringExtra(Constant.SHARED_DATE)
 
-        toolbar.title = "Weather Details"
+        toolbar.title = getString(R.string.weather_details)
         tvDate.text = date.changeFormatDate()
-
-        val layoutManager = LinearLayoutManager(this)
-        val dividerItem = DividerItemDecoration(rvWeathers.context, layoutManager.orientation)
-        dividerItem.setDrawable(ContextCompat.getDrawable(this, R.drawable.divider_item)!!)
-        rvWeathers.layoutManager = layoutManager
-        rvWeathers.addItemDecoration(dividerItem)
         /****************************End of set layout**********************************/
 
 
-        // Declare activity presenter
-        val presenter = DetailPresenter(this)
+        // Init activity presenter
+        presenter = DetailPresenter(this)
 
         // Presenter load detail weather
         presenter.loadDetailWeather(date)
@@ -59,6 +49,7 @@ class DetailActivity : AppCompatActivity(), DetailView {
     /***************************************************************************************/
     /**************************************   View   ***************************************/
     /***************************************************************************************/
+
     override fun showLoading() {
         ivLoading.startCustomLoading()
     }
@@ -67,8 +58,20 @@ class DetailActivity : AppCompatActivity(), DetailView {
         ivLoading.endCustomLoading()
     }
 
-    override fun onListWeather(dataDetailWeathers: List<ResponseModel.DataDetailWeather>) {
-        rvWeathers.adapter = DetailAdapter(this, dataDetailWeathers, rvWeathers)
+    override fun showError() {
+        noConnection.visibility = View.VISIBLE
+        noConnection.setOnClickListener { _ ->
+            presenter.loadDetailWeather(date)
+            noConnection.visibility = View.GONE
+        }
+    }
+
+    override fun onWeatherLoaded(dataDetailWeathers: List<ResponseModel.DataDetailWeather>) {
+        val detailWeatherFragment = WeatherFragment()
+        detailWeatherFragment.dataDetailWeathers = dataDetailWeathers
+        fragmentManager!!.beginTransaction()
+                .replace(R.id.container, detailWeatherFragment)
+                .commit()
     }
     /***************************************End of View************************************/
 
@@ -76,16 +79,9 @@ class DetailActivity : AppCompatActivity(), DetailView {
     /***************************************************************************************/
     /*********************   Override Function App Compact Activity   **********************/
     /***************************************************************************************/
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.list_menu, menu)
-        return true
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> onBackPressed()
-            R.id.actionGraphic -> Message.showToast(this, "Menu graph pressed", Message.INFORMATION)
         }
         return super.onOptionsItemSelected(item)
     }
