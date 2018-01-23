@@ -1,13 +1,13 @@
 package com.solusi247.weather247.fragment
 
-import android.app.Fragment
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.*
 import com.solusi247.weather247.R
-import com.solusi247.weather247.adapter.DetailAdapter
+import com.solusi247.weather247.adapter.WeatherAdapter
 import com.solusi247.weather247.module.model.ResponseModel
 import com.solusi247.weather247.module.presenter.WeatherPresenter
 import com.solusi247.weather247.module.view.WeatherView
@@ -50,7 +50,7 @@ class WeatherFragment : Fragment(), WeatherView {
     /***************************************************************************************/
 
     override fun onListWeather(dataDetailWeathers: List<ResponseModel.DataDetailWeather>) {
-        rvWeathers.adapter = DetailAdapter(activity!!.baseContext, dataDetailWeathers, rvWeathers)
+        rvWeathers.adapter = WeatherAdapter(dataDetailWeathers, rvWeathers)
     }
 
     /***************************************End of View************************************/
@@ -65,13 +65,14 @@ class WeatherFragment : Fragment(), WeatherView {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val graphFragment = GraphFragment()
         when (item.itemId) {
             R.id.actionGraphic ->
                 fragmentManager!!.beginTransaction()
                         .setCustomAnimations(
                                 R.animator.detail_flip_right_in,
                                 R.animator.detail_flip_right_out)
-                        .replace(R.id.container, GraphFragment())
+                        .replace(R.id.container, graphFragment)
                         .commit()
         }
         return super.onOptionsItemSelected(item)

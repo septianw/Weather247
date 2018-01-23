@@ -1,6 +1,5 @@
 package com.solusi247.weather247.adapter
 
-import android.content.Context
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -15,13 +14,12 @@ import com.solusi247.weather247.utils.changeFormatDate
 import com.solusi247.weather247.utils.convertToWeatherIcon
 import kotlinx.android.synthetic.main.last_weather_item.view.*
 
-class MainAdapter(val context: Context,
-                  val dataWeathers: List<ResponseModel.DataWeather>,
+class MainAdapter(val dataWeathers: List<ResponseModel.DataWeather>,
                   val listener: LastWeatherListener)
     : RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): MainViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.last_weather_item, parent, false)
+        val view = LayoutInflater.from(parent?.context).inflate(R.layout.last_weather_item, parent, false)
         return MainViewHolder(view)
     }
 

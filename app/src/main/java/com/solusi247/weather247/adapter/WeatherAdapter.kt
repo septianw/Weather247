@@ -1,7 +1,6 @@
 package com.solusi247.weather247.adapter
 
 import android.animation.AnimatorInflater
-import android.content.Context
 import android.os.Build
 import android.support.transition.TransitionManager
 import android.support.v7.widget.RecyclerView
@@ -16,15 +15,14 @@ import com.solusi247.weather247.module.model.ResponseModel
 import com.solusi247.weather247.utils.convertToWeatherIcon
 import kotlinx.android.synthetic.main.list_weather_item.view.*
 
-class DetailAdapter(val context: Context,
-                    val dataDetailWeathers: List<ResponseModel.DataDetailWeather>,
-                    val recyclerView: RecyclerView)
-    : RecyclerView.Adapter<DetailAdapter.WeatherViewHolder>() {
+class WeatherAdapter(val dataDetailWeathers: List<ResponseModel.DataDetailWeather>,
+                     val recyclerView: RecyclerView)
+    : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
 
     var expandedPostition = -1
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): WeatherViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.list_weather_item, parent, false)
+        val view = LayoutInflater.from(parent?.context).inflate(R.layout.list_weather_item, parent, false)
         return WeatherViewHolder(view)
     }
 

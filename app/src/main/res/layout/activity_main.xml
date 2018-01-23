@@ -10,11 +10,10 @@
 
     <TextView
         android:id="@+id/tvDescription"
-        style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/bryant_medium_alt"
+        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
         android:textColor="@color/textHome"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,11 +23,10 @@
 
     <TextView
         android:id="@+id/tvLocation"
-        style="@style/Base.TextAppearance.AppCompat.Subhead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/main_margin_vertical"
-        android:fontFamily="@font/bryant_medium_alt"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
         android:textColor="@color/textHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,11 +35,10 @@
 
     <TextView
         android:id="@+id/tvDate"
-        style="@style/Base.TextAppearance.AppCompat.Subhead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/main_margin_vertical"
-        android:fontFamily="@font/bryant_medium_alt"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
         android:textColor="@color/textHome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +69,6 @@
         android:layout_marginTop="40dp"
         android:drawablePadding="@dimen/main_margin_vertical"
         android:drawableTop="@drawable/ic_temperature"
-        android:fontFamily="@font/bryant_medium_alt"
         android:gravity="center_horizontal"
         android:textColor="@color/textHome"
         android:textSize="24sp"
@@ -89,7 +85,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/main_margin_vertical"
         android:drawableTop="@drawable/ic_pressure"
-        android:fontFamily="@font/bryant_medium_alt"
         android:gravity="center_horizontal"
         android:textColor="@color/textHome"
         android:textSize="24sp"
@@ -107,7 +102,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/main_margin_vertical"
         android:drawableTop="@drawable/ic_humidity"
-        android:fontFamily="@font/bryant_medium_alt"
         android:gravity="center_horizontal"
         android:textColor="@color/textHome"
         android:textSize="24sp"
@@ -135,12 +129,11 @@
 
         <TextView
             android:id="@+id/lastWeather"
-            style="@style/TextAppearance.AppCompat.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/main_margin_vertical"
             android:layout_marginStart="@dimen/main_margin_horizontal"
-            android:fontFamily="@font/bryant_medium_alt"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="@android:color/white"
             tools:text="@string/past_weather" />
 
