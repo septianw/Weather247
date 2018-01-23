@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEE"
     android:fitsSystemWindows="true"
     tools:context="com.solusi247.weather247.activity.DetailActivity">
 
@@ -24,12 +23,11 @@
             app:layout_scrollFlags="scroll|enterAlways">
 
             <TextView
-                style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/bryant_medium_alt"
                 android:gravity="center_vertical"
                 android:text="@string/weather_details"
+                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -38,7 +36,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#039BE5">
+            android:background="@color/colorSecondary">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -48,12 +46,11 @@
 
             <TextView
                 android:id="@+id/tvDate"
-                style="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/bryant_medium_alt"
                 android:padding="8dp"
                 android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 tools:text="12 Jan 2018" />

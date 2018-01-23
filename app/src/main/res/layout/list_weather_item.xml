@@ -14,20 +14,20 @@
 
         <TextView
             android:id="@+id/tvTime"
-            style="@style/TextAppearance.AppCompat.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textSize="18sp"
             tools:text="11:00" />
 
         <TextView
             android:id="@+id/tvDescription"
-            style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Subtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvTime"
             android:layout_marginStart="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"
             android:textSize="14sp"
             tools:text="Thunderstorm" />
 
@@ -44,7 +44,6 @@
         android:id="@+id/attrWeather"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:baselineAligned="false"
         android:orientation="horizontal"
         android:padding="8dp">
 

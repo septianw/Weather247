@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.progress_loading.*
 class DetailActivity : AppCompatActivity(), DetailView {
 
     lateinit var presenter: DetailPresenter
+
     lateinit var date: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -67,10 +68,10 @@ class DetailActivity : AppCompatActivity(), DetailView {
     }
 
     override fun onWeatherLoaded(dataDetailWeathers: List<ResponseModel.DataDetailWeather>) {
-        val detailWeatherFragment = WeatherFragment()
-        detailWeatherFragment.dataDetailWeathers = dataDetailWeathers
-        fragmentManager!!.beginTransaction()
-                .replace(R.id.container, detailWeatherFragment)
+        val weatherFragment = WeatherFragment()
+        weatherFragment.dataDetailWeathers = dataDetailWeathers
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, weatherFragment)
                 .commit()
     }
     /***************************************End of View************************************/

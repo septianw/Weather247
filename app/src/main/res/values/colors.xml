@@ -3,6 +3,7 @@
     <color name="colorPrimary">#29B6FC</color>
     <color name="colorPrimaryDark">#29B6FC</color>
     <color name="colorAccent">#29B6FC</color>
+    <color name="colorSecondary">#039BE5</color>
 
     <color name="bgHome">#FFF</color>
 

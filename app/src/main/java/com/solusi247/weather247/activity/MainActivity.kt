@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
 
     override fun onLastWeather(dataWeathers: List<ResponseModel.DataWeather>) {
         lastWeather.text = getString(R.string.past_weather)
-        rvLastWeather.adapter = MainAdapter(this, dataWeathers, this)
+        rvLastWeather.adapter = MainAdapter(dataWeathers, this)
     }
     /***************************************End of View************************************/
 
