@@ -70,7 +70,8 @@ class DetailActivity : AppCompatActivity(), DetailView {
     override fun onWeatherLoaded(dataDetailWeathers: List<ResponseModel.DataDetailWeather>) {
         val weatherFragment = WeatherFragment()
         weatherFragment.dataDetailWeathers = dataDetailWeathers
-        getSupportFragmentManager().beginTransaction()
+        getSupportFragmentManager()
+                .beginTransaction()
                 .replace(R.id.container, weatherFragment)
                 .commit()
     }

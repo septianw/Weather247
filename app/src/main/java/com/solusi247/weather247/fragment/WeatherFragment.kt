@@ -65,7 +65,13 @@ class WeatherFragment : Fragment(), WeatherView {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        onGraphLoaded(item, dataDetailWeathers)
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun onGraphLoaded(item: MenuItem, dataDetailWeathers: List<ResponseModel.DataDetailWeather>) {
         val graphFragment = GraphFragment()
+        graphFragment.dataDetailWeathers = dataDetailWeathers
         when (item.itemId) {
             R.id.actionGraphic ->
                 fragmentManager!!.beginTransaction()
@@ -75,7 +81,6 @@ class WeatherFragment : Fragment(), WeatherView {
                         .replace(R.id.container, graphFragment)
                         .commit()
         }
-        return super.onOptionsItemSelected(item)
     }
     /*****************************End of Override Function Fragment**************************/
 
