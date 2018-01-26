@@ -8,6 +8,38 @@
     android:background="@color/bgHome"
     tools:context="com.solusi247.weather247.activity.MainActivity">
 
+    <LinearLayout
+        android:id="@+id/llWeatherInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:visibility="visible">
+
+        <com.solusi247.weather247.custom.ArchView
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:id="@+id/lastWeather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/main_margin_vertical"
+            android:layout_marginStart="@dimen/main_margin_horizontal"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textColor="@android:color/white"
+            tools:text="@string/past_weather" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvLastWeather"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            tools:layout_height="88dp" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="wrap_content"
@@ -54,8 +86,8 @@
 
     <ImageView
         android:id="@+id/ivIconWeather"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
         android:layout_margin="16dp"
         app:layout_constraintLeft_toLeftOf="@id/guidelineVertical"
         app:layout_constraintRight_toRightOf="@id/guidelineVertical"
@@ -112,38 +144,6 @@
         app:layout_constraintTop_toTopOf="@id/tvTemperature"
         tools:text="97%"
         tools:visibility="visible" />
-
-    <LinearLayout
-        android:id="@+id/llWeatherInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:orientation="vertical"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:visibility="visible">
-
-        <com.solusi247.weather247.custom.ArchView
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
-
-        <TextView
-            android:id="@+id/lastWeather"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/main_margin_vertical"
-            android:layout_marginStart="@dimen/main_margin_horizontal"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textColor="@android:color/white"
-            tools:text="@string/past_weather" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvLastWeather"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:overScrollMode="never"
-            tools:layout_height="88dp" />
-    </LinearLayout>
 
     <include layout="@layout/progress_loading" />
 

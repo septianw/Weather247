@@ -3,12 +3,12 @@ package com.solusi247.weather247.utils
 import android.animation.ValueAnimator
 import android.graphics.drawable.AnimationDrawable
 import android.view.View
-import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
 import com.solusi247.weather247.R
 import com.solusi247.weather247.Weather247
 import java.text.SimpleDateFormat
+import java.util.*
 
 fun String.convertToWeatherIcon() = when (this) {
     Weather247.context.getString(R.string.thunderstorm) -> R.drawable.ic_thunderstorm
@@ -35,10 +35,14 @@ fun String.changeFormatDate(): String {
 }
 
 fun ImageView.startCustomLoading() {
-    this.setBackgroundResource(R.drawable.loading_animation)
+    val animationList = listOf(
+            R.drawable.loading_cloudy,
+            R.drawable.loading_partly_cloudy,
+            R.drawable.loading_rainy,
+            R.drawable.loading_sunny,
+            R.drawable.loading_thunderstorm)
+    this.setBackgroundResource(animationList.get(Random().nextInt(animationList.size)))
     val anim = this.background as AnimationDrawable
-    val zoom = AnimationUtils.loadAnimation(Weather247.context, R.anim.zoom_in_out)
-    this.animation = zoom
     this.visibility = View.VISIBLE
     anim.start()
 }

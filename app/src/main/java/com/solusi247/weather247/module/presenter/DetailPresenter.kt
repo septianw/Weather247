@@ -1,7 +1,6 @@
 package com.solusi247.weather247.module.presenter
 
 import com.solusi247.weather247.Weather247
-import com.solusi247.weather247.module.model.ResponseModel
 import com.solusi247.weather247.module.view.DetailView
 import com.solusi247.weather247.service.ApiService
 import com.solusi247.weather247.utils.Constant
@@ -12,8 +11,6 @@ import io.reactivex.schedulers.Schedulers
 class DetailPresenter(val view: DetailView) {
 
     val apiService: ApiService
-
-    lateinit var data: List<ResponseModel.DataDetailWeather>
 
     init {
         apiService = ApiService.create()
@@ -29,8 +26,7 @@ class DetailPresenter(val view: DetailView) {
                             try {
                                 if (!result.error) {
                                     //Result successfull
-                                    data = result.data
-                                    view.onWeatherLoaded(data)
+                                    view.onWeatherLoaded(result.data)
                                 } else {
                                     // Connection success but error in result
                                     view.showError()
