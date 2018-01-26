@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+
+    <item
+        android:drawable="@drawable/ic_partly_cloudy_anim_1"
+        android:duration="@integer/loading_delay" />
+    <item
+        android:drawable="@drawable/ic_partly_cloudy_anim_2"
+        android:duration="@integer/loading_delay" />
+    <item
+        android:drawable="@drawable/ic_partly_cloudy_anim_3"
+        android:duration="@integer/loading_delay" />
+    <item
+        android:drawable="@drawable/ic_partly_cloudy_anim_4"
+        android:duration="@integer/loading_delay" />
+    <item
+        android:drawable="@drawable/ic_partly_cloudy_anim_5"
+        android:duration="@integer/loading_delay" />
+</animation-list>

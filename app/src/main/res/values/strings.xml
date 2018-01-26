@@ -2,6 +2,12 @@
     <string name="app_name">Weather247</string>
 
     <string name="weather_details">Weather Details</string>
+    <string name="temperature">Temperature</string>
+    <string name="temperature_graph">Temperature Graph</string>
+    <string name="pressure">Pressure</string>
+    <string name="pressure_graph">Pressure Graph</string>
+    <string name="humidity">Humidity</string>
+    <string name="humidity_graph">Humidity Graph</string>
 
     <string name="last_update">Last Updated : %s, %s</string>
     <string name="date">%s\n%s</string>
@@ -10,7 +16,7 @@
     <string name="pressure_text">%shPa</string>
     <string name="past_weather">This week weather info</string>
 
-    <!--     List location supported in weather247     -->
+    <!--     List menu in weather247     -->
     <string name="menu_graphic">Display graph</string>
     <string name="menu_list">Display list</string>
 
@@ -29,7 +35,7 @@
     <string name="humidity_now">Humidity is %s</string>
     <string name="pressure_now">Pressure is %s</string>
 
-    <!--                List problems                       -->
+    <!--        List problems         -->
     <string name="result_error">Failed to load data</string>
     <string name="problem_server">Cannot getting data from server</string>
 </resources>
