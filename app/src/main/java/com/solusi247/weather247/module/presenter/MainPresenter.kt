@@ -25,18 +25,18 @@ class MainPresenter(val view: MainView) {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(
-                        { result ->
+                        {
                             try {
-                                if (!result.error) {
+                                if (!it.error) {
                                     view.playAnimationWeatherToday()
                                     // Result successfull
-                                    view.onWeatherToday(result.data[0])
+                                    view.onWeatherToday(it.data[0])
 
-                                    view.onLastWeather(result.data)
+                                    view.onLastWeather(it.data)
                                 } else {
                                     // Connection success but error in result
                                     view.showError()
-                                    Message.showToast(context, result.message, Message.ERROR)
+                                    Message.showToast(context, it.message, Message.ERROR)
                                 }
                             } catch (e: Exception) {
                                 e.printStackTrace()
@@ -46,8 +46,8 @@ class MainPresenter(val view: MainView) {
                                 view.hideLoading()
                             }
                         },
-                        { error ->
-                            error.printStackTrace()
+                        {
+                            it.printStackTrace()
                             view.showError()
                             Message.showToast(context, Constant.PROBLEM_SERVER, Message.ERROR)
                             view.hideLoading()

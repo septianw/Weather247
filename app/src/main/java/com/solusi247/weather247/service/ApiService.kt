@@ -18,7 +18,7 @@ interface ApiService {
     @GET("api/weather/weather_detail/date/{date}")
     fun getWeatherDetails(@Path("date") date: String): Observable<ResponseModel.DetailWeather>
 
-    companion object Factory {
+    companion object {
 
         val BASE_URL = "https://weather247.000webhostapp.com/"
 

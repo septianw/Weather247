@@ -8,8 +8,10 @@
     tools:context="com.solusi247.weather247.activity.SplashActivity">
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="@dimen/image_splash"
+        android:layout_height="@dimen/image_splash"
+        android:contentDescription="@string/description"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_logo_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -1,13 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <dimen name="main_margin_horizontal">8dp</dimen>
     <dimen name="main_margin_vertical">8dp</dimen>
+
+    <dimen name="last_weather_size">110dp</dimen>
+    <dimen name="last_weather_margin">4dp</dimen>
 
     <dimen name="detail_margin_horizontal">8dp</dimen>
     <dimen name="detail_margin_vertical">8dp</dimen>
 
+    <dimen name="list_weather_margin_horizontal">8dp</dimen>
+    <dimen name="list_weather_margin_vertical">8dp</dimen>
+    <dimen name="attr_list_weather_margin_horizontal">4dp</dimen>
+
     <dimen name="graph_margin">8dp</dimen>
 
-    <dimen name="z_detail">3dp</dimen>
+    <dimen name="text_small">16sp</dimen>
+    <dimen name="text_medium">20sp</dimen>
+    <dimen name="text_large">24sp</dimen>
+
+    <dimen name="image_small">32dp</dimen>
+    <dimen name="image_normal">48dp</dimen>
+    <dimen name="image_large">128dp</dimen>
+    <dimen name="image_xlarge">144dp</dimen>
+    <dimen name="image_splash">200dp</dimen>
+
+    <dimen name="card_elevation">1dp</dimen>
+    <dimen name="z_detail">0dp</dimen>
 
 </resources>

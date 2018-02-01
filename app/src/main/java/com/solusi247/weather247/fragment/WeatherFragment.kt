@@ -17,6 +17,10 @@ class WeatherFragment : Fragment(), WeatherView {
 
     lateinit var dataDetailWeathers: List<ResponseModel.DataDetailWeather>
 
+    /*************************************************************************************/
+    /****************************   Override Function Fragment   *************************/
+    /*************************************************************************************/
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.fragment_weather, container, false)
@@ -40,25 +44,9 @@ class WeatherFragment : Fragment(), WeatherView {
 
         // Init presenter
         val presenter = WeatherPresenter(this)
-
         // Init weather details
         presenter.initWeatherDetails(dataDetailWeathers)
     }
-
-    /***************************************************************************************/
-    /**************************************   View   ***************************************/
-    /***************************************************************************************/
-
-    override fun onListWeather(dataDetailWeathers: List<ResponseModel.DataDetailWeather>) {
-        rvWeathers.adapter = WeatherAdapter(dataDetailWeathers, rvWeathers)
-    }
-
-    /***************************************End of View************************************/
-
-
-    /***************************************************************************************/
-    /****************************   Override Function Fragment   ***************************/
-    /***************************************************************************************/
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater) {
         inflater.inflate(R.menu.weather_menu, menu)
@@ -78,7 +66,16 @@ class WeatherFragment : Fragment(), WeatherView {
         }
         return super.onOptionsItemSelected(item)
     }
+    /*****************************End of Override Function Fragment************************/
 
-    /*****************************End of Override Function Fragment**************************/
+
+    /***************************************************************************************/
+    /**************************************   View   ***************************************/
+    /***************************************************************************************/
+
+    override fun onListWeather(dataDetailWeathers: List<ResponseModel.DataDetailWeather>) {
+        rvWeathers.adapter = WeatherAdapter(dataDetailWeathers, rvWeathers)
+    }
+    /***************************************End of View*************************************/
 
 }

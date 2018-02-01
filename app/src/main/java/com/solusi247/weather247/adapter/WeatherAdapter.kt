@@ -1,7 +1,5 @@
 package com.solusi247.weather247.adapter
 
-import android.animation.AnimatorInflater
-import android.os.Build
 import android.support.transition.TransitionManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -30,11 +28,9 @@ class WeatherAdapter(val dataDetailWeathers: List<ResponseModel.DataDetailWeathe
         val isExpanded = position == expandedPostition
         with(holder) {
             bind(dataDetailWeathers[position])
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                llWeather.stateListAnimator = AnimatorInflater.loadStateListAnimator(itemView.context, R.animator.detail_selection)
-            llWeather.isActivated = isExpanded
             attrWeather.visibility = if (isExpanded) View.VISIBLE else View.GONE
-            llWeather.setOnClickListener { _ ->
+            llWeather.isActivated = isExpanded
+            llWeather.setOnClickListener {
                 notifyItemChanged(position)
                 notifyItemChanged(expandedPostition)
                 expandedPostition = if (isExpanded) -1 else position
@@ -45,7 +41,7 @@ class WeatherAdapter(val dataDetailWeathers: List<ResponseModel.DataDetailWeathe
 
     override fun getItemCount() = dataDetailWeathers.size
 
-    class WeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class WeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val llWeather: LinearLayout
         val tvDescription: TextView
         val ivIconWeather: ImageView

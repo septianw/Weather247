@@ -3,6 +3,7 @@
     android:duration="@integer/middle_animation"
     android:fillAfter="true">
 
+    <!-- Move in position from bottom -->
     <translate
         android:fromYDelta="100%p"
         android:interpolator="@android:anim/linear_interpolator"

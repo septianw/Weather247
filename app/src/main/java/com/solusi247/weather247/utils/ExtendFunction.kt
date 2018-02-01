@@ -19,6 +19,15 @@ fun String.convertToWeatherIcon() = when (this) {
     else -> 0
 }
 
+fun String.convertToWhiteWeatherIcon() = when (this) {
+    Weather247.context.getString(R.string.thunderstorm) -> R.drawable.ic_thunderstorm_white
+    Weather247.context.getString(R.string.cloudy) -> R.drawable.ic_cloudy_white
+    Weather247.context.getString(R.string.partly_cloudy) -> R.drawable.ic_partly_cloudy_white
+    Weather247.context.getString(R.string.sunny) -> R.drawable.ic_sunny
+    Weather247.context.getString(R.string.rainy) -> R.drawable.ic_rainy_white
+    else -> 0
+}
+
 fun String.convertToLargeWeatherIcon() = when (this) {
     Weather247.context.getString(R.string.thunderstorm) -> R.drawable.ic_thunderstorm_large
     Weather247.context.getString(R.string.cloudy) -> R.drawable.ic_cloudy_large
@@ -29,8 +38,8 @@ fun String.convertToLargeWeatherIcon() = when (this) {
 }
 
 fun String.changeFormatDate(): String {
-    val date = SimpleDateFormat("yyyy-mm-dd").parse(this)
-    val dateString = SimpleDateFormat("dd MMM yyyy").format(date)
+    val date = SimpleDateFormat("yyyy-mm-dd", Locale.US).parse(this)
+    val dateString = SimpleDateFormat("dd MMM yyyy", Locale.US).format(date)
     return dateString
 }
 
@@ -49,16 +58,17 @@ fun ImageView.startCustomLoading() {
 
 fun ImageView.endCustomLoading() {
     this.clearAnimation()
-    this.visibility = View.INVISIBLE
+    this.visibility = View.GONE
 }
 
-fun TextView.textAnimationIncrement(number: Any, unit: String? = null) {
+fun TextView.textAnimationIncrement(number: Any, duration: Long, unit: String? = null) {
     val value = number.toString().toInt()
-    val valueAnimator = ValueAnimator.ofInt(0, value)
-    valueAnimator.setDuration(1000)
-    valueAnimator.addUpdateListener { animation ->
-        val text = "${animation.getAnimatedValue()}$unit"
-        this.text = text
+    val valueAnimator = ValueAnimator.ofInt(0, value).apply {
+        setDuration(duration)
+        addUpdateListener {
+            val text = "${it.getAnimatedValue()}$unit"
+            this@textAnimationIncrement.text = text
+        }
     }
     valueAnimator.start()
 }

@@ -10,15 +10,15 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:padding="@dimen/list_weather_margin_horizontal">
 
         <TextView
             android:id="@+id/tvTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/list_weather_margin_horizontal"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textSize="18sp"
+            android:textSize="@dimen/text_small"
             tools:text="11:00" />
 
         <TextView
@@ -26,17 +26,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvTime"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/list_weather_margin_horizontal"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"
-            android:textSize="14sp"
+            android:textSize="@dimen/text_small"
             tools:text="Thunderstorm" />
 
         <ImageView
             android:id="@+id/ivIconWeather"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="@dimen/image_normal"
+            android:layout_height="@dimen/image_normal"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/list_weather_margin_horizontal"
+            android:contentDescription="@string/description_3"
             tools:src="@drawable/ic_thunderstorm" />
     </RelativeLayout>
 
@@ -45,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="8dp">
+        android:padding="@dimen/list_weather_margin_horizontal">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -54,8 +55,9 @@
             android:gravity="center_vertical">
 
             <ImageView
-                android:layout_width="32dp"
-                android:layout_height="36dp"
+                android:layout_width="@dimen/image_small"
+                android:layout_height="@dimen/image_small"
+                android:contentDescription="@string/description_4"
                 android:src="@drawable/ic_temperature" />
 
             <TextView
@@ -63,8 +65,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:textColor="@color/textDetails"
-                android:textSize="18sp"
+                android:textColor="@color/textDetail"
+                android:textSize="@dimen/text_medium"
                 tools:text="26\u2103" />
 
         </LinearLayout>
@@ -72,22 +74,24 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:gravity="center_vertical">
 
             <ImageView
-                android:layout_width="32dp"
-                android:layout_height="36dp"
+                android:layout_width="@dimen/image_small"
+                android:layout_height="@dimen/image_small"
+                android:layout_marginStart="@dimen/attr_list_weather_margin_horizontal"
+                android:contentDescription="@string/description_4"
                 android:src="@drawable/ic_pressure" />
 
             <TextView
                 android:id="@+id/tvPressure"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="@dimen/attr_list_weather_margin_horizontal"
                 android:gravity="center_vertical"
-                android:textColor="@color/textDetails"
-                android:textSize="18sp"
+                android:textColor="@color/textDetail"
+                android:textSize="@dimen/text_medium"
                 tools:text="1023hPa" />
         </LinearLayout>
 
@@ -98,20 +102,21 @@
             android:gravity="center_vertical">
 
             <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="8dp"
+                android:layout_width="@dimen/image_small"
+                android:layout_height="@dimen/image_small"
+                android:layout_marginStart="@dimen/attr_list_weather_margin_horizontal"
+                android:contentDescription="@string/description_4"
                 android:src="@drawable/ic_humidity" />
 
             <TextView
                 android:id="@+id/tvHumidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="@dimen/attr_list_weather_margin_horizontal"
                 android:gravity="center_vertical"
-                android:textColor="@color/textDetails"
-                android:textSize="18sp"
-                tools:text="97 %" />
+                android:textColor="@color/textDetail"
+                android:textSize="@dimen/text_medium"
+                tools:text="97%" />
         </LinearLayout>
 
     </LinearLayout>

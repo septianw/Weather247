@@ -1,21 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#29B6FC</color>
-    <color name="colorPrimaryDark">#29B6FC</color>
-    <color name="colorAccent">#29B6FC</color>
-    <color name="colorSecondary">#039BE5</color>
 
-    <color name="bgHome">#FFF</color>
+    <!-- Color primary app -->
+    <color name="colorPrimary">#45AAF2</color>
+    <color name="colorPrimaryDark">#45AAF2</color>
+    <color name="colorAccent">#45AAF2</color>
+    <color name="colorSecondary">#0984E3</color>
 
+    <!-- Graph color -->
+    <color name="colorGraph">#45AAF2</color>
+
+    <!-- Background color main -->
+    <color name="backgroundMain">#FFF</color>
+
+    <!-- Color selected unselected list detail weather -->
     <color name="selectedDetail">#FFF</color>
-    <color name="unselectedDetail">#F5F5F5</color>
+    <color name="unselectedDetail">#FAFAFA</color>
 
-    <color name="textHome">#29B6FC</color>
-    <color name="textDetails">#000</color>
+    <!-- Text color -->
+    <color name="textHome">#45AAF2</color>
+    <color name="textDetail">#000</color>
+    <color name="textWidget">#FFF</color>
 
+    <!-- Utils color -->
     <color name="white">#FFF</color>
 
-    <color name="messageInfo">#29B6FC</color>
+    <!-- Used in message toast -->
+    <color name="messageInfo">#45AAF2</color>
     <color name="messageError">#FFF</color>
 
 </resources>

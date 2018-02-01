@@ -1,5 +1,6 @@
 package com.solusi247.weather247.module.presenter
 
+import android.content.Context
 import com.solusi247.weather247.Weather247
 import com.solusi247.weather247.module.view.DetailView
 import com.solusi247.weather247.service.ApiService
@@ -11,9 +12,11 @@ import io.reactivex.schedulers.Schedulers
 class DetailPresenter(val view: DetailView) {
 
     val apiService: ApiService
+    val context: Context
 
     init {
         apiService = ApiService.create()
+        context = Weather247.context
     }
 
     fun loadDetailWeather(date: String) {
@@ -22,28 +25,28 @@ class DetailPresenter(val view: DetailView) {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(
-                        { result ->
+                        {
                             try {
-                                if (!result.error) {
+                                if (!it.error) {
                                     //Result successfull
-                                    view.onWeatherLoaded(result.data)
+                                    view.onWeatherLoaded(it.data)
                                 } else {
                                     // Connection success but error in result
                                     view.showError()
-                                    Message.showToast(Weather247.context, result.message, Message.ERROR)
+                                    Message.showToast(context, it.message, Message.ERROR)
                                 }
                             } catch (e: Exception) {
                                 e.printStackTrace()
                                 view.showError()
-                                Message.showToast(Weather247.context, Constant.RESULT_ERROR, Message.ERROR)
+                                Message.showToast(context, Constant.RESULT_ERROR, Message.ERROR)
                             } finally {
                                 view.hideLoading()
                             }
                         },
-                        { error ->
-                            error.printStackTrace()
+                        {
+                            it.printStackTrace()
                             view.showError()
-                            Message.showToast(Weather247.context, Constant.PROBLEM_SERVER, Message.ERROR)
+                            Message.showToast(context, Constant.PROBLEM_SERVER, Message.ERROR)
                             view.hideLoading()
                         }
                 )

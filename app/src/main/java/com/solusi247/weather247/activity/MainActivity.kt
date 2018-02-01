@@ -3,6 +3,7 @@ package com.solusi247.weather247.activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.view.animation.Animation
@@ -22,53 +23,57 @@ import kotlinx.android.synthetic.main.progress_loading.*
 
 class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWeatherListener {
 
+    /************************************************************************************/
+    /*********************   Override Function AppCompatActivity   **********************/
+    /************************************************************************************/
+
     lateinit var presenter: MainPresenter
 
     lateinit var fadeIn: Animation
     lateinit var moveUp: Animation
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // Initialize activity presenter
+        presenter = MainPresenter(this)
+
         fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
         moveUp = AnimationUtils.loadAnimation(this, R.anim.move_up_in)
 
-        /********************************Set layout************************************/
+        /****************Set layout******************/
         val linearLayoutManager = LinearLayoutManager(this)
 
         linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
 
         rvLastWeather.layoutManager = linearLayoutManager
-        /****************************End of set layout**********************************/
+        rvLastWeather.addItemDecoration(DividerItemDecoration(this, linearLayoutManager.orientation))
+        /**************End of set layout***************/
 
-
-        // Declare activity presenter
-        presenter = MainPresenter(this)
+        noConnection.setOnClickListener { _ ->
+            presenter.loadWeather()
+            noConnection.visibility = View.GONE
+        }
 
         // Presenter load weather
         presenter.loadWeather()
 
     }
+    /**********************End of Override Function AppCompatActivity*********************/
 
-    /***************************************************************************************/
-    /**************************************   View   ***************************************/
-    /***************************************************************************************/
 
-    override fun showLoading() {
-        ivLoading.startCustomLoading()
-    }
+    /*************************************************************************************/
+    /**************************************   View   *************************************/
+    /*************************************************************************************/
 
-    override fun hideLoading() {
-        ivLoading.endCustomLoading()
-    }
+    override fun showLoading() = ivLoading.startCustomLoading()
+
+    override fun hideLoading() = ivLoading.endCustomLoading()
 
     override fun showError() {
         noConnection.visibility = View.VISIBLE
-        noConnection.setOnClickListener { _ ->
-            presenter.loadWeather()
-            noConnection.visibility = View.GONE
-        }
     }
 
     override fun playAnimationWeatherToday() {
@@ -77,12 +82,12 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         tvLocation.startAnimation(fadeIn)
         tvDate.startAnimation(fadeIn)
         tvTemperature.startAnimation(fadeIn)
-        tvPressure.startAnimation(fadeIn)
-        tvHumidity.startAnimation(fadeIn)
-        llWeatherInfo.startAnimation(moveUp)
         tvTemperature.visibility = View.VISIBLE
+        tvPressure.startAnimation(fadeIn)
         tvPressure.visibility = View.VISIBLE
+        tvHumidity.startAnimation(fadeIn)
         tvHumidity.visibility = View.VISIBLE
+        llWeatherInfo.startAnimation(moveUp)
         llWeatherInfo.visibility = View.VISIBLE
     }
 
@@ -91,9 +96,9 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         tvDescription.text = dataWeather.weather
         tvLocation.text = getString(R.string.default_location)
         tvDate.text = String.format(getString(R.string.last_update), dataWeather.date.changeFormatDate(), dataWeather.time)
-        tvTemperature.textAnimationIncrement(dataWeather.temperature, "\u2103")
-        tvPressure.textAnimationIncrement(dataWeather.pressure, "hPa")
-        tvHumidity.textAnimationIncrement(dataWeather.humidity, "%")
+        tvTemperature.textAnimationIncrement(dataWeather.temperature, 1000, "\u2103")
+        tvPressure.textAnimationIncrement(dataWeather.pressure, 1000, "hPa")
+        tvHumidity.textAnimationIncrement(dataWeather.humidity, 1000, "%")
         tvTemperature.setOnLongClickListener { onTemperatureClicked(); true }
         tvPressure.setOnLongClickListener { onPressureClicked(); true }
         tvHumidity.setOnLongClickListener { onHumidityClicked(); true }
@@ -103,23 +108,23 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         lastWeather.text = getString(R.string.past_weather)
         rvLastWeather.adapter = MainAdapter(dataWeathers, this)
     }
-    /***************************************End of View************************************/
+    /***************************************End of View**********************************/
 
 
-    /***************************************************************************************/
-    /*****************************   Last WeatherFragment Listener   *******************************/
-    /***************************************************************************************/
+    /*************************************************************************************/
+    /***************************   LastWeatherFragment Listener   ************************/
+    /*************************************************************************************/
 
     override fun goToDetail(date: String) {
         val intentToDetail = Intent(this, DetailActivity::class.java)
         intentToDetail.putExtra(Constant.SHARED_DATE, date)
         startActivity(intentToDetail)
     }
-    /******************************End of Last WeatherFragment Listener******************************/
+    /******************************End of LastWeatherFragment Listener*********************/
 
 
     /***************************************************************************************/
-    /*****************************   Attr WeatherFragment Listener   *******************************/
+    /**************************   Attr WeatherFragment Listener   **************************/
     /***************************************************************************************/
 
     override fun onTemperatureClicked() {
@@ -136,5 +141,5 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         val message = String.format(getString(R.string.pressure_now), tvPressure.text)
         Message.showToast(this, message, Message.INFORMATION)
     }
-    /******************************End of Attr WeatherFragment Listener******************************/
+    /***************************End of Attr WeatherFragment Listener*************************/
 }

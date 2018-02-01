@@ -1,6 +1,5 @@
 package com.solusi247.weather247.adapter
 
-import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +10,7 @@ import com.solusi247.weather247.R
 import com.solusi247.weather247.listener.LastWeatherListener
 import com.solusi247.weather247.module.model.ResponseModel
 import com.solusi247.weather247.utils.changeFormatDate
-import com.solusi247.weather247.utils.convertToWeatherIcon
+import com.solusi247.weather247.utils.convertToWhiteWeatherIcon
 import kotlinx.android.synthetic.main.last_weather_item.view.*
 
 class MainAdapter(val dataWeathers: List<ResponseModel.DataWeather>,
@@ -24,28 +23,24 @@ class MainAdapter(val dataWeathers: List<ResponseModel.DataWeather>,
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        with(holder) {
-            bind(dataWeathers[position])
-            cvWeather.setOnClickListener { listener.goToDetail(dataWeathers[position].date) }
-        }
+        holder.bind(dataWeathers[position])
     }
 
     override fun getItemCount() = dataWeathers.size
 
-    class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val cvWeather: CardView
+    inner class MainViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val ivIconWeather: ImageView
         val tvDate: TextView
 
         init {
-            cvWeather = itemView.cvWeatherItem
             ivIconWeather = itemView.ivIconWeather
             tvDate = itemView.tvDate
         }
 
         fun bind(dataWeather: ResponseModel.DataWeather) {
-            ivIconWeather.setImageResource(dataWeather.weather.convertToWeatherIcon())
+            ivIconWeather.setImageResource(dataWeather.weather.convertToWhiteWeatherIcon())
             tvDate.text = dataWeather.date.changeFormatDate()
+            itemView.setOnClickListener { listener.goToDetail(dataWeather.date) }
         }
     }
 

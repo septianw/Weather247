@@ -9,9 +9,10 @@
     tools:visibility="visible">
 
     <ImageView
-        android:layout_width="144dp"
-        android:layout_height="144dp"
+        android:layout_width="@dimen/image_xlarge"
+        android:layout_height="@dimen/image_xlarge"
         android:layout_gravity="center"
+        android:contentDescription="@string/description_1"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_retry" />
 </FrameLayout>

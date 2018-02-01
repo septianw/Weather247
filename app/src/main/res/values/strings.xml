@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">Weather247</string>
 
     <string name="weather_details">Weather Details</string>
@@ -16,26 +17,33 @@
     <string name="pressure_text">%shPa</string>
     <string name="past_weather">This week weather info</string>
 
-    <!--     List menu in weather247     -->
+    <!-- List menu in weather247 -->
     <string name="menu_graphic">Display graph</string>
     <string name="menu_list">Display list</string>
 
-    <!--     List location supported in weather247     -->
+    <!-- List location supported  -->
     <string name="default_location">Yogyakarta, Indonesia</string>
 
-    <!--     List weather supported in weather247     -->
+    <!-- List weather supported  -->
     <string name="cloudy">Cloudy</string>
     <string name="partly_cloudy">Partly Cloudy</string>
     <string name="rainy">Rainy</string>
     <string name="sunny">Sunny</string>
     <string name="thunderstorm">Thunderstorm</string>
 
-    <!--     List attributes weather supported in weather247     -->
-    <string name="temperature_now">Temperature is %s</string>
-    <string name="humidity_now">Humidity is %s</string>
-    <string name="pressure_now">Pressure is %s</string>
+    <!-- List attributes weather supported -->
+    <string name="temperature_now">Temperature %s</string>
+    <string name="humidity_now">Humidity %s</string>
+    <string name="pressure_now">Pressure %s</string>
 
-    <!--        List problems         -->
+    <!-- List problems -->
     <string name="result_error">Failed to load data</string>
     <string name="problem_server">Cannot getting data from server</string>
+
+    <!-- Description image -->
+    <string name="description" translatable="false">Utils image</string>
+    <string name="description_1" translatable="false">Icon error</string>
+    <string name="description_2" translatable="false">Progress loading</string>
+    <string name="description_3" translatable="false">Icon weather</string>
+    <string name="description_4" translatable="false">Attributes weather</string>
 </resources>

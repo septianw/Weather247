@@ -11,29 +11,31 @@ import com.solusi247.weather247.module.view.SplashView
 
 class SplashActivity : AppCompatActivity(), SplashView {
 
+    /************************************************************************************/
+    /*********************   Override Function AppCompatActivity   **********************/
+    /************************************************************************************/
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
+        // Declare activity presenter
+        val presenter = SplashPresenter(this)
 
-        /********************************Set layout************************************/
         // Used to hide status bar
         val decorView = window.decorView
         val uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN
         decorView.systemUiVisibility = uiOptions
-        /****************************End of set layout**********************************/
-
-
-        // Declare activity presenter
-        val presenter = SplashPresenter(this)
 
         // Presenter load Splashscreen
         presenter.loadSplash()
     }
+    /**********************End of Override Function AppCompatActivity*********************/
 
-    /***************************************************************************************/
-    /**************************************   View   ***************************************/
-    /***************************************************************************************/
+    /*************************************************************************************/
+    /**************************************   View   *************************************/
+    /*************************************************************************************/
+
     override fun showSplashScreen(duration: Long) {
         Handler().postDelayed({
             val intentToMain = Intent(this, MainActivity::class.java)
@@ -41,5 +43,5 @@ class SplashActivity : AppCompatActivity(), SplashView {
             finish()
         }, duration)
     }
-    /*************************************End of View****************************************/
+    /*************************************End of View**************************************/
 }

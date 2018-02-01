@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:elevation="1dp">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -26,7 +27,6 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:text="@string/weather_details"
-                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
                 android:textColor="@color/white"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -41,6 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
+                android:contentDescription="@string/description"
                 android:src="@drawable/ic_calendar" />
 
             <TextView
@@ -49,7 +50,6 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 tools:text="12 Jan 2018" />
@@ -63,10 +63,12 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <include layout="@layout/progress_loading" />
+    <include
+        layout="@layout/progress_loading"
+        tools:visibility="gone" />
 
     <include
         layout="@layout/no_connection"
-        tools:visibility="invisible" />
+        tools:visibility="gone" />
 
 </android.support.design.widget.CoordinatorLayout>

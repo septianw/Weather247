@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cvWeatherItem"
-    android:layout_width="100dp"
+    android:layout_width="@dimen/last_weather_size"
     android:layout_height="wrap_content"
-    android:layout_margin="4dp"
+    android:layout_margin="@dimen/last_weather_margin"
     android:background="?attr/selectableItemBackgroundBorderless"
-    android:foreground="?attr/selectableItemBackgroundBorderless">
+    android:foreground="?attr/selectableItemBackgroundBorderless"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/last_weather_margin"
+    tools:background="@color/colorPrimary">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:padding="4dp">
+    <ImageView
+        android:id="@+id/ivIconWeather"
+        android:layout_width="@dimen/image_normal"
+        android:layout_height="@dimen/image_normal"
+        android:contentDescription="@string/description_3"
+        tools:src="@drawable/ic_thunderstorm_white" />
 
-        <ImageView
-            android:id="@+id/ivIconWeather"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            tools:src="@drawable/ic_thunderstorm" />
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/last_weather_margin"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_small"
+        tools:text="20 Jan 2018" />
 
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/colorPrimary"
-            tools:text="20 Jan 2018" />
-    </LinearLayout>
-
-</android.support.v7.widget.CardView>
+</LinearLayout>
