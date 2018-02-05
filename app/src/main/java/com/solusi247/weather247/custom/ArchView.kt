@@ -13,7 +13,9 @@ import com.solusi247.weather247.R
 class ArchView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
     val path = Path()
+    val path2 = Path()
     val paint = Paint()
+    val paint2 = Paint()
     lateinit var rect: RectF
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -24,14 +26,33 @@ class ArchView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        paint.isAntiAlias = true
-        paint.style = Paint.Style.FILL
-        paint.color = ContextCompat.getColor(context, R.color.backgroundMain)
+        paint.apply {
+            isAntiAlias = true
+            style = Paint.Style.FILL
+            color = ContextCompat.getColor(context, R.color.backgroundMain)
+        }
 
-        path.moveTo(rect.top, rect.left)
-        path.quadTo(rect.centerX(), rect.bottom, rect.right, rect.top)
+        paint2.apply {
+            isAntiAlias = true
+            style = Paint.Style.FILL
+            color = ContextCompat.getColor(context, R.color.colorArch)
+            alpha = 122
+        }
 
-        canvas.drawColor(ContextCompat.getColor(context, R.color.colorPrimary))
-        canvas.drawPath(path, paint)
+        path.apply {
+            moveTo(rect.left, rect.top)
+            quadTo(rect.centerX(), rect.bottom * 2, rect.right, rect.top)
+        }
+
+        path2.apply {
+            moveTo(rect.left, rect.bottom)
+            quadTo(rect.centerX(), rect.top, rect.right, rect.bottom)
+        }
+
+        canvas.apply {
+            drawRect(rect, paint2)
+            drawPath(path, paint)
+            drawPath(path2, paint2)
+        }
     }
 }

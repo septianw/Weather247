@@ -7,6 +7,8 @@ interface MainView {
     fun showLoading()
     fun hideLoading()
     fun showError()
+    fun startRefresh()
+    fun stopRefresh()
     fun playAnimationWeatherToday()
     fun onWeatherToday(dataWeather: ResponseModel.DataWeather)
     fun onLastWeather(dataWeathers: List<ResponseModel.DataWeather>)

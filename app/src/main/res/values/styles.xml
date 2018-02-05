@@ -8,4 +8,7 @@
         <item name="android:fontFamily">@font/bryant_medium_alt</item>
     </style>
 
+    <style name="AppTheme.NoActionBar.WhiteAccent" parent="AppTheme.NoActionBar">
+        <item name="colorAccent">@color/white</item>
+    </style>
 </resources>

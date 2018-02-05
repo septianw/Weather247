@@ -7,9 +7,12 @@ import com.solusi247.weather247.service.ApiService
 import com.solusi247.weather247.utils.Constant
 import com.solusi247.weather247.utils.Message
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 class DetailPresenter(val view: DetailView) {
+
+    lateinit var subscription: Disposable
 
     val apiService: ApiService
     val context: Context
@@ -19,9 +22,11 @@ class DetailPresenter(val view: DetailView) {
         context = Weather247.context
     }
 
+    fun interruptService() = subscription.dispose()
+
     fun loadDetailWeather(date: String) {
         view.showLoading()
-        apiService.getWeatherDetails(date)
+        subscription = apiService.getWeatherDetails(date)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(

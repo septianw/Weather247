@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
 
     lateinit var fadeIn: Animation
     lateinit var moveUp: Animation
+    lateinit var rotate360: Animation
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +43,7 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
 
         fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
         moveUp = AnimationUtils.loadAnimation(this, R.anim.move_up_in)
+        rotate360 = AnimationUtils.loadAnimation(this, R.anim.rotate_360)
 
         /****************Set layout******************/
         val linearLayoutManager = LinearLayoutManager(this)
@@ -52,6 +54,8 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         rvLastWeather.addItemDecoration(DividerItemDecoration(this, linearLayoutManager.orientation))
         /**************End of set layout***************/
 
+        ivRefresh.setOnClickListener { presenter.refreshWeather() }
+
         noConnection.setOnClickListener { _ ->
             presenter.loadWeather()
             noConnection.visibility = View.GONE
@@ -60,6 +64,11 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         // Presenter load weather
         presenter.loadWeather()
 
+    }
+
+    override fun onDestroy() {
+        presenter.interruptService()
+        super.onDestroy()
     }
     /**********************End of Override Function AppCompatActivity*********************/
 
@@ -76,7 +85,12 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         noConnection.visibility = View.VISIBLE
     }
 
+    override fun startRefresh() = ivRefresh.startAnimation(rotate360)
+
+    override fun stopRefresh() = ivRefresh.clearAnimation()
+
     override fun playAnimationWeatherToday() {
+        flRefresh.startAnimation(fadeIn)
         ivIconWeather.startAnimation(fadeIn)
         tvDescription.startAnimation(fadeIn)
         tvLocation.startAnimation(fadeIn)

@@ -32,10 +32,10 @@ class GraphPresenter(val view: GraphView) {
             color = ContextCompat.getColor(context, R.color.colorGraph)
             valueTextSize = 12f
             setDrawFilled(true)
-            fillAlpha = 255
+            fillAlpha = 200
             isHighlightEnabled = false
             fillColor = ContextCompat.getColor(context, R.color.colorGraph)
-            mode = LineDataSet.Mode.CUBIC_BEZIER
+            mode = LineDataSet.Mode.HORIZONTAL_BEZIER
             setCircleColor(Color.BLACK)
             circleRadius = 4f
         }
@@ -58,10 +58,10 @@ class GraphPresenter(val view: GraphView) {
             color = ContextCompat.getColor(context, R.color.colorGraph)
             valueTextSize = 12f
             setDrawFilled(true)
-            fillAlpha = 255
+            fillAlpha = 200
             isHighlightEnabled = false
             fillColor = ContextCompat.getColor(context, R.color.colorGraph)
-            mode = LineDataSet.Mode.CUBIC_BEZIER
+            mode = LineDataSet.Mode.HORIZONTAL_BEZIER
             setCircleColor(Color.BLACK)
             circleRadius = 4f
         }
@@ -85,10 +85,10 @@ class GraphPresenter(val view: GraphView) {
             color = ContextCompat.getColor(context, R.color.colorGraph)
             valueTextSize = 12f
             setDrawFilled(true)
-            fillAlpha = 255
-            isHighlightEnabled = false
+            fillAlpha = 200
+            isHighlightEnabled = true
             fillColor = ContextCompat.getColor(context, R.color.colorGraph)
-            mode = LineDataSet.Mode.CUBIC_BEZIER
+            mode = LineDataSet.Mode.HORIZONTAL_BEZIER
             setCircleColor(Color.BLACK)
             circleRadius = 4f
         }

@@ -1,5 +1,6 @@
 package com.solusi247.weather247.adapter
 
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.solusi247.weather247.R
+import com.solusi247.weather247.Weather247
 import com.solusi247.weather247.listener.LastWeatherListener
 import com.solusi247.weather247.module.model.ResponseModel
 import com.solusi247.weather247.utils.changeFormatDate
@@ -23,7 +25,12 @@ class MainAdapter(val dataWeathers: List<ResponseModel.DataWeather>,
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
-        holder.bind(dataWeathers[position])
+        with(holder) {
+            bind(dataWeathers[position])
+            if (position == 0) {
+                itemView.setBackgroundColor(ContextCompat.getColor(Weather247.context, R.color.todayDetail))
+            }
+        }
     }
 
     override fun getItemCount() = dataWeathers.size

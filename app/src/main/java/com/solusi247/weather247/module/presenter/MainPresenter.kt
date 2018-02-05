@@ -7,9 +7,12 @@ import com.solusi247.weather247.service.ApiService
 import com.solusi247.weather247.utils.Constant
 import com.solusi247.weather247.utils.Message
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 class MainPresenter(val view: MainView) {
+
+    lateinit var subscription: Disposable
 
     val apiService: ApiService
     val context: Context
@@ -19,9 +22,11 @@ class MainPresenter(val view: MainView) {
         context = Weather247.context
     }
 
+    fun interruptService() = subscription.dispose()
+
     fun loadWeather() {
         view.showLoading()
-        apiService.getAllWeather()
+        subscription = apiService.getAllWeather()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(
@@ -51,6 +56,39 @@ class MainPresenter(val view: MainView) {
                             view.showError()
                             Message.showToast(context, Constant.PROBLEM_SERVER, Message.ERROR)
                             view.hideLoading()
+                        }
+                )
+    }
+
+    fun refreshWeather() {
+        view.startRefresh()
+        apiService.getAllWeather()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                        {
+                            try {
+                                if (!it.error) {
+                                    view.playAnimationWeatherToday()
+                                    // Result successfull
+                                    view.onWeatherToday(it.data[0])
+
+                                    view.onLastWeather(it.data)
+                                } else {
+                                    // Connection success but error in result
+                                    Message.showToast(context, it.message, Message.ERROR)
+                                }
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                                Message.showToast(context, Constant.RESULT_ERROR, Message.ERROR)
+                            } finally {
+                                view.stopRefresh()
+                            }
+                        },
+                        {
+                            it.printStackTrace()
+                            Message.showToast(context, Constant.PROBLEM_SERVER, Message.ERROR)
+                            view.stopRefresh()
                         }
                 )
     }

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/last_weather_size"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/last_weather_margin"
     android:background="?attr/selectableItemBackgroundBorderless"
     android:foreground="?attr/selectableItemBackgroundBorderless"
     android:gravity="center_horizontal"

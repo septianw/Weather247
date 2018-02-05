@@ -53,12 +53,18 @@ class DetailActivity : AppCompatActivity(), DetailView {
         presenter.loadDetailWeather(date)
     }
 
+    override fun onDestroy() {
+        presenter.interruptService()
+        super.onDestroy()
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> onBackPressed()
         }
         return super.onOptionsItemSelected(item)
     }
+
     /**********************End of Override Function AppCompatActivity*********************/
 
 

@@ -10,7 +10,7 @@
     <string name="humidity">Humidity</string>
     <string name="humidity_graph">Humidity Graph</string>
 
-    <string name="last_update">Last Updated : %s, %s</string>
+    <string name="last_update">Last Updated: %s, %s</string>
     <string name="date">%s\n%s</string>
     <string name="temperature_text">%s\u2103</string>
     <string name="humidity_text">%s%%</string>
@@ -46,4 +46,5 @@
     <string name="description_2" translatable="false">Progress loading</string>
     <string name="description_3" translatable="false">Icon weather</string>
     <string name="description_4" translatable="false">Attributes weather</string>
+    <string name="description_5" translatable="false">Refresh</string>
 </resources>

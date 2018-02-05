@@ -5,15 +5,19 @@ import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.widget.Toast
 import com.solusi247.weather247.R
+import com.solusi247.weather247.Weather247
 import kotlinx.android.synthetic.main.custom_toast.view.*
 
 object Message {
+
+    var toast = Toast(Weather247.context)
 
     val INFORMATION = 111
     val ERROR = 222
 
     fun showToast(context: Context, message: String, type: Int, length: Int = Toast.LENGTH_SHORT) {
-        val toast = Toast(context)
+        dissmissToast()
+        toast = Toast(context)
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view = inflater.inflate(R.layout.custom_toast, null)
         when (type) {
@@ -34,5 +38,7 @@ object Message {
         toast.duration = length
         toast.show()
     }
+
+    fun dissmissToast() = toast.cancel()
 
 }
