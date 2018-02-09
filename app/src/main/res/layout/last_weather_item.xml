@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/last_weather_margin"
         android:textColor="@color/white"
-        android:textSize="@dimen/text_small"
+        android:textSize="@dimen/text_xsmall"
         tools:text="20 Jan 2018" />
 
 </LinearLayout>

@@ -20,7 +20,7 @@ interface ApiService {
 
     companion object {
 
-        val BASE_URL = "https://weather247.000webhostapp.com/"
+        val BASE_URL = "https://stefanusjulianto.000webhostapp.com/"
 
         fun create(): ApiService {
             val httpClient = OkHttpClient().newBuilder().addInterceptor { chain ->

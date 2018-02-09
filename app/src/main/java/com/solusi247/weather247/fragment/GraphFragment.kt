@@ -8,6 +8,7 @@ import com.solusi247.weather247.R
 import com.solusi247.weather247.module.model.ResponseModel
 import com.solusi247.weather247.module.presenter.GraphPresenter
 import com.solusi247.weather247.module.view.GraphView
+import com.solusi247.weather247.utils.MyMarkerView
 import kotlinx.android.synthetic.main.fragment_graph.*
 
 
@@ -31,8 +32,16 @@ class GraphFragment : Fragment(), GraphView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val presenter = GraphPresenter(this)
+        val mv = MyMarkerView(activity!!.baseContext, R.layout.custom_marker_view, dataDetailWeathers)
+
+        mv.apply {
+            chartView = chartTemperature
+            chartView = chartHumidity
+            chartView = chartPressure
+        }
 
         chartTemperature.apply {
+            marker = mv
             isDragEnabled = true
             isScaleYEnabled = false
             animateXY(1000, 1000)
@@ -42,6 +51,7 @@ class GraphFragment : Fragment(), GraphView {
         }
 
         chartPressure.apply {
+            marker = mv
             isDragEnabled = true
             isScaleYEnabled = false
             animateXY(1000, 1000)
@@ -51,6 +61,7 @@ class GraphFragment : Fragment(), GraphView {
         }
 
         chartHumidity.apply {
+            marker = mv
             isDragEnabled = true
             isScaleYEnabled = false
             animateXY(1000, 1000)

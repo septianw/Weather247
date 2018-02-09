@@ -29,11 +29,12 @@ class GraphPresenter(val view: GraphView) {
         }
 
         val lineDataSet = LineDataSet(entries, context.getString(R.string.temperature)).apply {
+
             color = ContextCompat.getColor(context, R.color.colorGraph)
             valueTextSize = 12f
             setDrawFilled(true)
             fillAlpha = 200
-            isHighlightEnabled = false
+            isHighlightEnabled = true
             fillColor = ContextCompat.getColor(context, R.color.colorGraph)
             mode = LineDataSet.Mode.HORIZONTAL_BEZIER
             setCircleColor(Color.BLACK)
@@ -59,7 +60,7 @@ class GraphPresenter(val view: GraphView) {
             valueTextSize = 12f
             setDrawFilled(true)
             fillAlpha = 200
-            isHighlightEnabled = false
+            isHighlightEnabled = true
             fillColor = ContextCompat.getColor(context, R.color.colorGraph)
             mode = LineDataSet.Mode.HORIZONTAL_BEZIER
             setCircleColor(Color.BLACK)
