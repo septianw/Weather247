@@ -21,7 +21,9 @@ class DetailActivity : AppCompatActivity(), DetailView {
 
     lateinit var presenter: DetailPresenter
 
+    lateinit var day: String
     lateinit var date: String
+    lateinit var textDate: String
 
     /************************************************************************************/
     /*********************   Override Function AppCompatActivity   **********************/
@@ -29,20 +31,18 @@ class DetailActivity : AppCompatActivity(), DetailView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        overridePendingTransition(R.anim.move_up_in_500, R.anim.move_up_out_500)
         setContentView(R.layout.activity_detail)
 
         // Initialize activity presenter
         presenter = DetailPresenter(this)
 
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
 
+        day = intent.getStringExtra(Constant.SHARED_DAY)
         date = intent.getStringExtra(Constant.SHARED_DATE)
 
-        toolbar.title = getString(R.string.weather_details)
-        tvDate.text = date.changeFormatDate()
+        textDate = "$day, ${date.changeFormatDate()}"
+        tvDate.text = textDate
 
         noConnection.setOnClickListener { _ ->
             presenter.loadDetailWeather(date)

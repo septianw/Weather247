@@ -37,8 +37,17 @@ fun String.convertToLargeWeatherIcon() = when (this) {
     else -> 0
 }
 
+fun String.convertToWhiteLargeWeatherIcon() = when (this) {
+    Weather247.context.getString(R.string.thunderstorm) -> R.drawable.ic_thunderstorm_white_large
+    Weather247.context.getString(R.string.cloudy) -> R.drawable.ic_cloudy_white_large
+    Weather247.context.getString(R.string.partly_cloudy) -> R.drawable.ic_partly_cloudy_white_large
+    Weather247.context.getString(R.string.sunny) -> R.drawable.ic_sunny_large
+    Weather247.context.getString(R.string.rainy) -> R.drawable.ic_rainy_white_large
+    else -> 0
+}
+
 fun String.changeFormatDate(): String {
-    val date = SimpleDateFormat("yyyy-mm-dd", Locale.US).parse(this)
+    val date = SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(this)
     val dateString = SimpleDateFormat("dd MMM yyyy", Locale.US).format(date)
     return dateString
 }

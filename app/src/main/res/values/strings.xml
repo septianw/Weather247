@@ -12,9 +12,13 @@
 
     <string name="last_update">Last Updated: %s, %s</string>
     <string name="date">%s\n%s</string>
+    <string name="default_temperature">0\u00b0</string>
+    <string name="default_humidity">0%</string>
+    <string name="default_pressure">0hPa</string>
     <string name="temperature_text">%s\u2103</string>
     <string name="humidity_text">%s%%</string>
     <string name="pressure_text">%shPa</string>
+
     <string name="past_weather">This week weather info</string>
 
     <!-- List menu in weather247 -->

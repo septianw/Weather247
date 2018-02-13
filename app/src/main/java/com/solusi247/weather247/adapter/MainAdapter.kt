@@ -47,7 +47,7 @@ class MainAdapter(val dataWeathers: List<ResponseModel.DataWeather>,
         fun bind(dataWeather: ResponseModel.DataWeather) {
             ivIconWeather.setImageResource(dataWeather.weather.convertToWhiteWeatherIcon())
             tvDate.text = dataWeather.date.changeFormatDate()
-            itemView.setOnClickListener { listener.goToDetail(dataWeather.date) }
+            itemView.setOnClickListener { listener.goToDetail(dataWeather.day, dataWeather.date) }
         }
     }
 

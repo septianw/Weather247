@@ -10,12 +10,14 @@
 
     <LinearLayout
         android:id="@+id/llWeatherInfo"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/colorInfo"
         android:orientation="vertical"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:visibility="visible">
 
         <com.solusi247.weather247.custom.ArchView
@@ -49,7 +51,7 @@
 
     <TextView
         android:id="@+id/tvDate"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
         android:padding="@dimen/main_margin_vertical"
@@ -88,8 +90,8 @@
 
         <ImageView
             android:id="@+id/ivRefresh"
-            android:layout_width="@dimen/image_normal"
-            android:layout_height="@dimen/image_normal"
+            android:layout_width="@dimen/image_small"
+            android:layout_height="@dimen/image_small"
             android:contentDescription="@string/description_5"
             android:src="@drawable/ic_refresh" />
     </FrameLayout>

@@ -19,16 +19,17 @@
 
     <!-- Color selected unselected list detail weather -->
     <color name="todayDetail">#11000000</color>
-    <color name="selectedDetail">#FFF</color>
-    <color name="unselectedDetail">#FAFAFA</color>
+    <color name="selectedDetail">#45AAF2</color>
+    <color name="unselectedDetail">#FFF</color>
 
     <!-- Text color -->
     <color name="textHome">#45AAF2</color>
-    <color name="textDetail">#000</color>
+    <color name="textDetail">#212121</color>
     <color name="textWidget">#FFF</color>
 
     <!-- Utils color -->
     <color name="white">#FFF</color>
+    <color name="black">#000</color>
 
     <!-- Used in message toast -->
     <color name="messageInfo">#45AAF2</color>

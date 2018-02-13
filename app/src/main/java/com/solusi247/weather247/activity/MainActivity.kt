@@ -129,8 +129,9 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
     /***************************   LastWeatherFragment Listener   ************************/
     /*************************************************************************************/
 
-    override fun goToDetail(date: String) {
+    override fun goToDetail(day: String, date: String) {
         val intentToDetail = Intent(this, DetailActivity::class.java)
+        intentToDetail.putExtra(Constant.SHARED_DAY, day)
         intentToDetail.putExtra(Constant.SHARED_DATE, date)
         startActivity(intentToDetail)
     }

@@ -5,10 +5,11 @@ import android.support.v4.app.Fragment
 import android.view.*
 import com.github.mikephil.charting.data.LineData
 import com.solusi247.weather247.R
+import com.solusi247.weather247.custom.CustomMarkerView
+import com.solusi247.weather247.custom.CustomXAxisValueFormater
 import com.solusi247.weather247.module.model.ResponseModel
 import com.solusi247.weather247.module.presenter.GraphPresenter
 import com.solusi247.weather247.module.view.GraphView
-import com.solusi247.weather247.utils.MyMarkerView
 import kotlinx.android.synthetic.main.fragment_graph.*
 
 
@@ -32,7 +33,7 @@ class GraphFragment : Fragment(), GraphView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val presenter = GraphPresenter(this)
-        val mv = MyMarkerView(activity!!.baseContext, R.layout.custom_marker_view, dataDetailWeathers)
+        val mv = CustomMarkerView(activity!!.baseContext, R.layout.custom_marker_view)
 
         mv.apply {
             chartView = chartTemperature
@@ -45,8 +46,8 @@ class GraphFragment : Fragment(), GraphView {
             isDragEnabled = true
             isScaleYEnabled = false
             animateXY(1000, 1000)
-            setScaleMinima(3f, 0f)
             description.isEnabled = false
+            xAxis.setValueFormatter(CustomXAxisValueFormater(dataDetailWeathers.map { it.time }))
             axisRight.isEnabled = false
         }
 
@@ -55,8 +56,8 @@ class GraphFragment : Fragment(), GraphView {
             isDragEnabled = true
             isScaleYEnabled = false
             animateXY(1000, 1000)
-            setScaleMinima(3f, 0f)
             description.isEnabled = false
+            xAxis.setValueFormatter(CustomXAxisValueFormater(dataDetailWeathers.map { it.time }))
             axisRight.isEnabled = false
         }
 
@@ -65,8 +66,8 @@ class GraphFragment : Fragment(), GraphView {
             isDragEnabled = true
             isScaleYEnabled = false
             animateXY(1000, 1000)
-            setScaleMinima(3f, 0f)
             description.isEnabled = false
+            xAxis.setValueFormatter(CustomXAxisValueFormater(dataDetailWeathers.map { it.time }))
             axisRight.isEnabled = false
         }
 
