@@ -38,12 +38,12 @@ class DetailPresenter(val view: DetailView) {
                                 } else {
                                     // Connection success but error in result
                                     view.showError()
-                                    Message.showToast(context, it.message, Message.ERROR)
+                                    Message.showToast(context, it.message, Message.Type.ERROR)
                                 }
                             } catch (e: Exception) {
                                 e.printStackTrace()
                                 view.showError()
-                                Message.showToast(context, Constant.RESULT_ERROR, Message.ERROR)
+                                Message.showToast(context, Constant.RESULT_ERROR, Message.Type.ERROR)
                             } finally {
                                 view.hideLoading()
                             }
@@ -51,7 +51,7 @@ class DetailPresenter(val view: DetailView) {
                         {
                             it.printStackTrace()
                             view.showError()
-                            Message.showToast(context, Constant.PROBLEM_SERVER, Message.ERROR)
+                            Message.showToast(context, Constant.PROBLEM_SERVER, Message.Type.ERROR)
                             view.hideLoading()
                         }
                 )

@@ -1,7 +1,6 @@
 package com.solusi247.weather247.module.presenter
 
 import android.content.Context
-import android.graphics.Color
 import android.support.v4.content.ContextCompat
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
@@ -21,24 +20,25 @@ class GraphPresenter(val view: GraphView) {
     }
 
     fun loadGraphTemperature(dataDetailWeathers: List<ResponseModel.DataDetailWeather>) {
+
+        val time = dataDetailWeathers.map { it.time }
         val temperatures = dataDetailWeathers.map { it.temperature }
 
         val entries = arrayListOf<Entry>()
         for (i in temperatures.indices) {
-            entries.add(Entry(i.toFloat(), temperatures[i].toFloat()))
+            entries.add(Entry(i.toFloat(), temperatures[i].toFloat(), time[i]))
         }
 
         val lineDataSet = LineDataSet(entries, context.getString(R.string.temperature)).apply {
-
             color = ContextCompat.getColor(context, R.color.colorGraph)
             valueTextSize = 12f
             setDrawFilled(true)
-            fillAlpha = 200
-            isHighlightEnabled = true
+            fillAlpha = 50
+            lineWidth = 3f
             fillColor = ContextCompat.getColor(context, R.color.colorGraph)
             mode = LineDataSet.Mode.HORIZONTAL_BEZIER
-            setCircleColor(Color.BLACK)
-            circleRadius = 4f
+            setCircleColor(ContextCompat.getColor(context, R.color.colorSecondary))
+            circleRadius = 5f
         }
 
         val dataSets = arrayListOf<ILineDataSet>(lineDataSet)
@@ -48,23 +48,25 @@ class GraphPresenter(val view: GraphView) {
     }
 
     fun loadGraphPressure(dataDetailWeathers: List<ResponseModel.DataDetailWeather>) {
+
+        val time = dataDetailWeathers.map { it.time }
         val pressure = dataDetailWeathers.map { it.pressure }
 
         val entries = arrayListOf<Entry>()
         for (i in pressure.indices) {
-            entries.add(Entry(i.toFloat(), pressure[i].toFloat()))
+            entries.add(Entry(i.toFloat(), pressure[i].toFloat(), time[i]))
         }
 
         val lineDataSet = LineDataSet(entries, context.getString(R.string.pressure)).apply {
             color = ContextCompat.getColor(context, R.color.colorGraph)
             valueTextSize = 12f
             setDrawFilled(true)
-            fillAlpha = 200
-            isHighlightEnabled = true
+            fillAlpha = 50
+            lineWidth = 3f
             fillColor = ContextCompat.getColor(context, R.color.colorGraph)
             mode = LineDataSet.Mode.HORIZONTAL_BEZIER
-            setCircleColor(Color.BLACK)
-            circleRadius = 4f
+            setCircleColor(ContextCompat.getColor(context, R.color.colorSecondary))
+            circleRadius = 5f
         }
 
         val dataSets = arrayListOf<ILineDataSet>(lineDataSet)
@@ -75,23 +77,24 @@ class GraphPresenter(val view: GraphView) {
 
     fun loadGraphHumidity(dataDetailWeathers: List<ResponseModel.DataDetailWeather>) {
 
+        val time = dataDetailWeathers.map { it.time }
         val humidity = dataDetailWeathers.map { it.humidity }
 
         val entries = arrayListOf<Entry>()
         for (i in humidity.indices) {
-            entries.add(Entry(i.toFloat(), humidity[i].toFloat()))
+            entries.add(Entry(i.toFloat(), humidity[i].toFloat(), time[i]))
         }
 
         val lineDataSet = LineDataSet(entries, context.getString(R.string.humidity)).apply {
             color = ContextCompat.getColor(context, R.color.colorGraph)
             valueTextSize = 12f
             setDrawFilled(true)
-            fillAlpha = 200
-            isHighlightEnabled = true
+            fillAlpha = 50
+            lineWidth = 3f
             fillColor = ContextCompat.getColor(context, R.color.colorGraph)
             mode = LineDataSet.Mode.HORIZONTAL_BEZIER
-            setCircleColor(Color.BLACK)
-            circleRadius = 4f
+            setCircleColor(ContextCompat.getColor(context, R.color.colorSecondary))
+            circleRadius = 5f
         }
 
         val dataSets = arrayListOf<ILineDataSet>(lineDataSet)

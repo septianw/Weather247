@@ -4,20 +4,26 @@
 
     <string name="weather_details">Weather Details</string>
     <string name="temperature">Temperature</string>
-    <string name="temperature_graph">Temperature Graph</string>
     <string name="pressure">Pressure</string>
-    <string name="pressure_graph">Pressure Graph</string>
     <string name="humidity">Humidity</string>
-    <string name="humidity_graph">Humidity Graph</string>
+
+    <string name="temperature_graph">Temperature Graph (\u2103)</string>
+    <string name="humidity_graph">Humidity Graph (%)</string>
+    <string name="pressure_graph">Pressure Graph (hPa)</string>
 
     <string name="last_update">Last Updated: %s, %s</string>
     <string name="date">%s\n%s</string>
-    <string name="default_temperature">0\u00b0</string>
+
+    <string name="default_temperature">0\u2103</string>
     <string name="default_humidity">0%</string>
     <string name="default_pressure">0hPa</string>
+
+    <!-- Template text -->
     <string name="temperature_text">%s\u2103</string>
     <string name="humidity_text">%s%%</string>
     <string name="pressure_text">%shPa</string>
+    <string name="time_text">Time: %s</string>
+    <string name="data_text">Data: %s</string>
 
     <string name="past_weather">This week weather info</string>
 

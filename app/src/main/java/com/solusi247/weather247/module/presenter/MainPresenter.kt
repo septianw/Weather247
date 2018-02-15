@@ -41,12 +41,12 @@ class MainPresenter(val view: MainView) {
                                 } else {
                                     // Connection success but error in result
                                     view.showError()
-                                    Message.showToast(context, it.message, Message.ERROR)
+                                    Message.showToast(context, it.message, Message.Type.ERROR)
                                 }
                             } catch (e: Exception) {
                                 e.printStackTrace()
                                 view.showError()
-                                Message.showToast(context, Constant.RESULT_ERROR, Message.ERROR)
+                                Message.showToast(context, Constant.RESULT_ERROR, Message.Type.ERROR)
                             } finally {
                                 view.hideLoading()
                             }
@@ -54,7 +54,7 @@ class MainPresenter(val view: MainView) {
                         {
                             it.printStackTrace()
                             view.showError()
-                            Message.showToast(context, Constant.PROBLEM_SERVER, Message.ERROR)
+                            Message.showToast(context, Constant.PROBLEM_SERVER, Message.Type.ERROR)
                             view.hideLoading()
                         }
                 )
@@ -76,18 +76,18 @@ class MainPresenter(val view: MainView) {
                                     view.onLastWeather(it.data)
                                 } else {
                                     // Connection success but error in result
-                                    Message.showToast(context, it.message, Message.ERROR)
+                                    Message.showToast(context, it.message, Message.Type.ERROR)
                                 }
                             } catch (e: Exception) {
                                 e.printStackTrace()
-                                Message.showToast(context, Constant.RESULT_ERROR, Message.ERROR)
+                                Message.showToast(context, Constant.RESULT_ERROR, Message.Type.ERROR)
                             } finally {
                                 view.stopRefresh()
                             }
                         },
                         {
                             it.printStackTrace()
-                            Message.showToast(context, Constant.PROBLEM_SERVER, Message.ERROR)
+                            Message.showToast(context, Constant.PROBLEM_SERVER, Message.Type.ERROR)
                             view.stopRefresh()
                         }
                 )

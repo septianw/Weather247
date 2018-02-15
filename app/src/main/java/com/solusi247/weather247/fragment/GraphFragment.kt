@@ -3,6 +3,7 @@ package com.solusi247.weather247.fragment
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
+import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.LineData
 import com.solusi247.weather247.R
 import com.solusi247.weather247.custom.CustomMarkerView
@@ -44,9 +45,12 @@ class GraphFragment : Fragment(), GraphView {
         chartTemperature.apply {
             marker = mv
             isDragEnabled = true
+            legend.isEnabled = false
             isScaleYEnabled = false
             animateXY(1000, 1000)
             description.isEnabled = false
+            xAxis.setLabelCount(5)
+            xAxis.position = XAxis.XAxisPosition.BOTTOM
             xAxis.setValueFormatter(CustomXAxisValueFormater(dataDetailWeathers.map { it.time }))
             axisRight.isEnabled = false
         }
@@ -54,9 +58,12 @@ class GraphFragment : Fragment(), GraphView {
         chartPressure.apply {
             marker = mv
             isDragEnabled = true
+            legend.isEnabled = false
             isScaleYEnabled = false
             animateXY(1000, 1000)
             description.isEnabled = false
+            xAxis.setLabelCount(5)
+            xAxis.position = XAxis.XAxisPosition.BOTTOM
             xAxis.setValueFormatter(CustomXAxisValueFormater(dataDetailWeathers.map { it.time }))
             axisRight.isEnabled = false
         }
@@ -64,10 +71,14 @@ class GraphFragment : Fragment(), GraphView {
         chartHumidity.apply {
             marker = mv
             isDragEnabled = true
+            legend.isEnabled = false
             isScaleYEnabled = false
             animateXY(1000, 1000)
             description.isEnabled = false
+            xAxis.setLabelCount(5)
+            xAxis.position = XAxis.XAxisPosition.BOTTOM
             xAxis.setValueFormatter(CustomXAxisValueFormater(dataDetailWeathers.map { it.time }))
+            axisLeft.granularity = 5f
             axisRight.isEnabled = false
         }
 

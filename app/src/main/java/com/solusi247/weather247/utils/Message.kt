@@ -12,21 +12,20 @@ object Message {
 
     var toast = Toast(Weather247.context)
 
-    val INFORMATION = 111
-    val ERROR = 222
+    enum class Type { INFORMATION, ERROR }
 
-    fun showToast(context: Context, message: String, type: Int, length: Int = Toast.LENGTH_SHORT) {
+    fun showToast(context: Context, message: String, type: Message.Type, length: Int = Toast.LENGTH_SHORT) {
         dissmissToast()
         toast = Toast(context)
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view = inflater.inflate(R.layout.custom_toast, null)
         when (type) {
-            INFORMATION -> {
+            Type.INFORMATION -> {
                 view.ivIcon.setImageResource(R.drawable.ic_info)
                 view.customToast.background = ContextCompat.getDrawable(context, R.drawable.custom_toast_info_background)
                 view.tvMessage.setTextColor(ContextCompat.getColor(context, R.color.messageInfo))
             }
-            ERROR -> {
+            Type.ERROR -> {
                 view.ivIcon.setImageResource(R.drawable.ic_error)
                 view.customToast.background = ContextCompat.getDrawable(context, R.drawable.custom_toast_error_background)
                 view.tvMessage.setTextColor(ContextCompat.getColor(context, R.color.messageError))

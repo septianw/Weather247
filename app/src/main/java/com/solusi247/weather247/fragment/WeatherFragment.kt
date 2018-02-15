@@ -10,15 +10,17 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.solusi247.weather247.R
 import com.solusi247.weather247.adapter.WeatherAdapter
+import com.solusi247.weather247.listener.AttrWeatherListener
 import com.solusi247.weather247.listener.ListWeatherListener
 import com.solusi247.weather247.module.model.ResponseModel
 import com.solusi247.weather247.module.presenter.WeatherPresenter
 import com.solusi247.weather247.module.view.WeatherView
+import com.solusi247.weather247.utils.Message
 import com.solusi247.weather247.utils.convertToWhiteLargeWeatherIcon
 import com.solusi247.weather247.utils.textAnimationIncrement
 import kotlinx.android.synthetic.main.fragment_weather.*
 
-class WeatherFragment : Fragment(), WeatherView, ListWeatherListener {
+class WeatherFragment : Fragment(), WeatherView, ListWeatherListener, AttrWeatherListener {
 
     lateinit var fadeIn: Animation
 
@@ -101,9 +103,34 @@ class WeatherFragment : Fragment(), WeatherView, ListWeatherListener {
         tvDescription.startAnimation(fadeIn)
         tvDescription.visibility = View.VISIBLE
         tvDescription.text = dataDetailWeather.weather
-        tvTemperature.textAnimationIncrement(dataDetailWeather.temperature, 1000, "\u00b0")
-        tvHumidity.textAnimationIncrement(dataDetailWeather.humidity, 1000, "%")
+        tvTemperature.textAnimationIncrement(dataDetailWeather.temperature, 1000, "\u2103")
         tvPressure.textAnimationIncrement(dataDetailWeather.pressure, 1000, "hPa")
+        tvHumidity.textAnimationIncrement(dataDetailWeather.humidity, 1000, "%")
+        tvTemperature.setOnLongClickListener { onTemperatureClicked(); true }
+        tvPressure.setOnLongClickListener { onPressureClicked(); true }
+        tvHumidity.setOnLongClickListener { onHumidityClicked(); true }
     }
     /****************************** End of ListWeatherListener ******************************/
+
+
+    /***************************************************************************************/
+    /**************************   Attr WeatherFragment Listener   **************************/
+    /***************************************************************************************/
+
+    override fun onTemperatureClicked() {
+        val message = String.format(getString(R.string.temperature_now), tvTemperature.text)
+        Message.showToast(activity!!.baseContext, message, Message.Type.INFORMATION)
+    }
+
+    override fun onPressureClicked() {
+        val message = String.format(getString(R.string.pressure_now), tvPressure.text)
+        Message.showToast(activity!!.baseContext, message, Message.Type.INFORMATION)
+    }
+
+    override fun onHumidityClicked() {
+        val message = String.format(getString(R.string.humidity_now), tvHumidity.text)
+        Message.showToast(activity!!.baseContext, message, Message.Type.INFORMATION)
+    }
+
+    /***************************End of Attr WeatherFragment Listener*************************/
 }

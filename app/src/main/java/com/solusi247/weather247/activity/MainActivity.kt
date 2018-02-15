@@ -144,17 +144,17 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
 
     override fun onTemperatureClicked() {
         val message = String.format(getString(R.string.temperature_now), tvTemperature.text)
-        Message.showToast(this, message, Message.INFORMATION)
-    }
-
-    override fun onHumidityClicked() {
-        val message = String.format(getString(R.string.humidity_now), tvHumidity.text)
-        Message.showToast(this, message, Message.INFORMATION)
+        Message.showToast(this, message, Message.Type.INFORMATION)
     }
 
     override fun onPressureClicked() {
         val message = String.format(getString(R.string.pressure_now), tvPressure.text)
-        Message.showToast(this, message, Message.INFORMATION)
+        Message.showToast(this, message, Message.Type.INFORMATION)
+    }
+
+    override fun onHumidityClicked() {
+        val message = String.format(getString(R.string.humidity_now), tvHumidity.text)
+        Message.showToast(this, message, Message.Type.INFORMATION)
     }
     /***************************End of Attr WeatherFragment Listener*************************/
 }
