@@ -9,7 +9,7 @@
 
     <!-- Info color -->
     <color name="colorArch">#45AAF2</color>
-    <color name="colorInfo">#BF45AAF2</color>
+    <color name="colorInfo">#ED45AAF2</color>
 
     <!-- Graph color -->
     <color name="colorGraph">#45AAF2</color>
@@ -19,7 +19,7 @@
 
     <!-- Color selected unselected list detail weather -->
     <color name="todayDetail">#11000000</color>
-    <color name="selectedDetail">#45AAF2</color>
+    <color name="selectedDetail">#0984E3</color>
     <color name="unselectedDetail">#FFF</color>
 
     <!-- Text color -->

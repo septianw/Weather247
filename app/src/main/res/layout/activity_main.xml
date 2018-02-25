@@ -1,204 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/clWeatherNow"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundMain"
-    tools:context="com.solusi247.weather247.activity.MainActivity">
+    android:background="@color/backgroundMain">
 
     <LinearLayout
-        android:id="@+id/llWeatherInfo"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorInfo"
-        android:orientation="vertical"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:visibility="visible">
+        android:orientation="vertical">
 
-        <com.solusi247.weather247.custom.ArchView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/arch_height"
-            android:background="@color/backgroundMain" />
-
-        <TextView
-            android:id="@+id/lastWeather"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/main_margin_vertical"
-            android:layout_marginStart="@dimen/main_margin_horizontal"
-            android:layout_marginTop="@dimen/main_margin_vertical"
-            android:textColor="@color/white"
-            android:textSize="@dimen/text_medium"
-            tools:text="@string/past_weather" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/white" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rvLastWeather"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/clWeatherNow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:overScrollMode="never"
-            tools:layout_height="88dp" />
+            tools:context="com.solusi247.weather247.activity.MainActivity"
+            tools:minHeight="500dp">
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:padding="@dimen/main_margin_vertical"
+                android:textAlignment="center"
+                android:textColor="@color/backgroundMain"
+                android:textSize="@dimen/text_small"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Last updated: 21-10-2018 22:00"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/main_margin_vertical"
+                android:textColor="@color/textHome"
+                android:textSize="@dimen/text_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvLocation"
+                tools:text="Thunderstorm" />
+
+            <FrameLayout
+                android:id="@+id/flRefresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/refresh_background"
+                android:padding="2dp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDate"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/ivRefresh"
+                    android:layout_width="@dimen/image_small"
+                    android:layout_height="@dimen/image_small"
+                    android:contentDescription="@string/description_5"
+                    android:src="@drawable/ic_refresh" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/main_margin_horizontal"
+                android:layout_marginTop="@dimen/main_margin_vertical"
+                android:drawableStart="@drawable/ic_location_blue"
+                android:gravity="center"
+                android:textColor="@color/textHome"
+                android:textSize="@dimen/text_medium"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDate"
+                tools:text="Yogyakarta, Indonesia"
+                tools:visibility="visible" />
+
+            <android.support.constraint.Guideline
+                android:id="@+id/guidelineVertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".5" />
+
+            <ImageView
+                android:id="@+id/ivIconWeather"
+                android:layout_width="@dimen/image_large"
+                android:layout_height="@dimen/image_large"
+                android:contentDescription="@string/description_3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDescription"
+                tools:src="@drawable/ic_thunderstorm_large" />
+
+            <TextView
+                android:id="@+id/tvTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:drawablePadding="@dimen/main_margin_vertical"
+                android:drawableTop="@drawable/ic_temperature"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center_horizontal"
+                android:textColor="@color/textHome"
+                android:textSize="@dimen/text_large"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@id/tvPressure"
+                app:layout_constraintEnd_toStartOf="@id/tvPressure"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvPressure"
+                tools:text="28\u2103"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvPressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/main_margin_vertical"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:drawablePadding="@dimen/main_margin_vertical"
+                android:drawableTop="@drawable/ic_pressure"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center_horizontal"
+                android:textColor="@color/textHome"
+                android:textSize="@dimen/text_large"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@id/guidelineVertical"
+                app:layout_constraintStart_toStartOf="@id/guidelineVertical"
+                app:layout_constraintTop_toBottomOf="@id/ivIconWeather"
+                tools:text="1023hPa"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvHumidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:drawablePadding="@dimen/main_margin_vertical"
+                android:drawableTop="@drawable/ic_humidity"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:gravity="center_horizontal"
+                android:textColor="@color/textHome"
+                android:textSize="@dimen/text_large"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@id/tvPressure"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvPressure"
+                app:layout_constraintTop_toTopOf="@id/tvPressure"
+                tools:text="87%"
+                tools:visibility="visible" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="200dp"
+                android:layout_height="3dp"
+                android:layout_margin="@dimen/main_margin_vertical"
+                android:background="@color/colorPrimary"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTemperature"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvRealtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/main_margin_horizontal"
+                android:layout_marginTop="@dimen/main_margin_vertical"
+                android:text="@string/temperature_realtime"
+                android:textColor="@color/textHome"
+                android:textSize="@dimen/text_small"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider"
+                tools:visibility="visible" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/chartMQTT"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/main_margin_horizontal"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvRealtime"
+                tools:visibility="visible" />
+
+            <include
+                layout="@layout/progress_loading"
+                tools:visibility="gone" />
+
+            <include
+                layout="@layout/no_connection"
+                tools:visibility="gone" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/llWeatherInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorInfo"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <com.solusi247.weather247.custom.ArchView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/arch_height"
+                android:background="@color/backgroundMain" />
+
+            <TextView
+                android:id="@+id/lastWeather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/main_margin_vertical"
+                android:layout_marginStart="@dimen/main_margin_horizontal"
+                android:layout_marginTop="@dimen/main_margin_vertical"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_medium"
+                tools:text="@string/past_weather" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvLastWeather"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                tools:layout_height="88dp" />
+        </LinearLayout>
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/tvDate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:padding="@dimen/main_margin_vertical"
-        android:textAlignment="center"
-        android:textColor="@color/backgroundMain"
-        android:textSize="@dimen/text_small"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Last updated: 21-10-2018 22:00"
-        tools:visibility="visible" />
-
-    <TextView
-        android:id="@+id/tvDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/main_margin_vertical"
-        android:textColor="@color/textHome"
-        android:textSize="@dimen/text_small"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvLocation"
-        tools:text="Thunderstorm" />
-
-    <FrameLayout
-        android:id="@+id/flRefresh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/refresh_background"
-        android:padding="2dp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDate"
-        tools:visibility="visible">
-
-        <ImageView
-            android:id="@+id/ivRefresh"
-            android:layout_width="@dimen/image_small"
-            android:layout_height="@dimen/image_small"
-            android:contentDescription="@string/description_5"
-            android:src="@drawable/ic_refresh" />
-    </FrameLayout>
-
-    <TextView
-        android:id="@+id/tvLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/main_margin_horizontal"
-        android:layout_marginTop="@dimen/main_margin_vertical"
-        android:drawableStart="@drawable/ic_location_blue"
-        android:gravity="center"
-        android:textColor="@color/textHome"
-        android:textSize="@dimen/text_medium"
-        android:textStyle="bold"
-        android:visibility="invisible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDate"
-        tools:text="Yogyakarta, Indonesia"
-        tools:visibility="visible" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guidelineVertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".5" />
-
-    <ImageView
-        android:id="@+id/ivIconWeather"
-        android:layout_width="@dimen/image_xlarge"
-        android:layout_height="@dimen/image_xlarge"
-        android:contentDescription="@string/description_3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDescription"
-        tools:src="@drawable/ic_thunderstorm_large" />
-
-    <TextView
-        android:id="@+id/tvTemperature"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:clickable="true"
-        android:drawablePadding="@dimen/main_margin_vertical"
-        android:drawableTop="@drawable/ic_temperature"
-        android:focusable="true"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:gravity="center_horizontal"
-        android:textColor="@color/textHome"
-        android:textSize="@dimen/text_large"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@id/tvPressure"
-        app:layout_constraintEnd_toStartOf="@id/tvPressure"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tvPressure"
-        tools:text="28\u2103"
-        tools:visibility="visible" />
-
-    <TextView
-        android:id="@+id/tvPressure"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/main_margin_attr"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:clickable="true"
-        android:drawablePadding="@dimen/main_margin_vertical"
-        android:drawableTop="@drawable/ic_pressure"
-        android:focusable="true"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:gravity="center_horizontal"
-        android:textColor="@color/textHome"
-        android:textSize="@dimen/text_large"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@id/guidelineVertical"
-        app:layout_constraintStart_toStartOf="@id/guidelineVertical"
-        app:layout_constraintTop_toBottomOf="@id/ivIconWeather"
-        tools:text="1023hPa"
-        tools:visibility="visible" />
-
-    <TextView
-        android:id="@+id/tvHumidity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:clickable="true"
-        android:drawablePadding="@dimen/main_margin_vertical"
-        android:drawableTop="@drawable/ic_humidity"
-        android:focusable="true"
-        android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:gravity="center_horizontal"
-        android:textColor="@color/textHome"
-        android:textSize="@dimen/text_large"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@id/tvPressure"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvPressure"
-        app:layout_constraintTop_toTopOf="@id/tvPressure"
-        tools:text="87%"
-        tools:visibility="visible" />
-
-    <include
-        layout="@layout/progress_loading"
-        tools:visibility="gone" />
-
-    <include
-        layout="@layout/no_connection"
-        tools:visibility="gone" />
-
-</android.support.constraint.ConstraintLayout>
+</ScrollView>

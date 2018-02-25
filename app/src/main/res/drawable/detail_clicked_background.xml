@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android" android:enterFadeDuration="@integer/half_middle_animation" android:exitFadeDuration="@integer/half_middle_animation">
-    <item android:drawable="@drawable/detail_shown_background" android:state_activated="true" />
+    <item android:drawable="@color/selectedDetail" android:state_activated="true" />
     <item android:drawable="@color/unselectedDetail" />
 </selector>

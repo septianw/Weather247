@@ -44,7 +44,6 @@ class GraphFragment : Fragment(), GraphView {
 
         chartTemperature.apply {
             marker = mv
-            isDragEnabled = true
             legend.isEnabled = false
             isScaleYEnabled = false
             animateXY(1000, 1000)
@@ -57,7 +56,6 @@ class GraphFragment : Fragment(), GraphView {
 
         chartPressure.apply {
             marker = mv
-            isDragEnabled = true
             legend.isEnabled = false
             isScaleYEnabled = false
             animateXY(1000, 1000)
@@ -70,7 +68,6 @@ class GraphFragment : Fragment(), GraphView {
 
         chartHumidity.apply {
             marker = mv
-            isDragEnabled = true
             legend.isEnabled = false
             isScaleYEnabled = false
             animateXY(1000, 1000)

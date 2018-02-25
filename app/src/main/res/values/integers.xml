@@ -7,4 +7,5 @@
     <integer name="middle_animation">500</integer>
     <integer name="long_animation">1000</integer>
 
+    <integer name="arch_height">100</integer>
 </resources>

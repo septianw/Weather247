@@ -36,7 +36,7 @@ class ArchView(context: Context, attrs: AttributeSet) : View(context, attrs) {
             isAntiAlias = true
             style = Paint.Style.FILL
             color = ContextCompat.getColor(context, R.color.colorArch)
-            alpha = 122
+            alpha = 183
         }
 
         path.apply {

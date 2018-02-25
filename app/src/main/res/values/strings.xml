@@ -7,6 +7,7 @@
     <string name="pressure">Pressure</string>
     <string name="humidity">Humidity</string>
 
+    <string name="temperature_realtime">Realtime Temperature (\u2103)</string>
     <string name="temperature_graph">Temperature Graph (\u2103)</string>
     <string name="humidity_graph">Humidity Graph (%)</string>
     <string name="pressure_graph">Pressure Graph (hPa)</string>

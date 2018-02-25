@@ -2,6 +2,7 @@ package com.solusi247.weather247.utils
 
 import android.animation.ValueAnimator
 import android.graphics.drawable.AnimationDrawable
+import android.util.TypedValue
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -9,6 +10,7 @@ import com.solusi247.weather247.R
 import com.solusi247.weather247.Weather247
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.roundToInt
 
 fun String.convertToWeatherIcon() = when (this) {
     Weather247.context.getString(R.string.thunderstorm) -> R.drawable.ic_thunderstorm
@@ -82,4 +84,14 @@ fun TextView.textAnimationIncrement(number: Any, duration: Long, unit: String? =
     valueAnimator.start()
 }
 
+fun Int.convertToPixel(): Int {
+    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX,
+            this.toFloat(),
+            Weather247.context.getResources().getDisplayMetrics()).roundToInt()
+}
 
+fun Int.convertToDp(): Int {
+    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+            this.toFloat(),
+            Weather247.context.getResources().getDisplayMetrics()).roundToInt()
+}

@@ -5,9 +5,14 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.util.DisplayMetrics
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.YAxis
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
 import com.solusi247.weather247.R
 import com.solusi247.weather247.adapter.MainAdapter
 import com.solusi247.weather247.listener.AttrWeatherListener
@@ -28,6 +33,7 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
     /************************************************************************************/
 
     lateinit var presenter: MainPresenter
+    lateinit var mqttHelper: MqttHelper
 
     lateinit var fadeIn: Animation
     lateinit var moveUp: Animation
@@ -46,12 +52,30 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         rotate360 = AnimationUtils.loadAnimation(this, R.anim.rotate_360)
 
         /****************Set layout******************/
+        val displayMetrics = DisplayMetrics()
+        windowManager.defaultDisplay.getMetrics(displayMetrics)
+        val params = clWeatherNow.layoutParams
+        params.height = displayMetrics.heightPixels - resources.getInteger(R.integer.arch_height).convertToPixel()
+        clWeatherNow.layoutParams = params
+
         val linearLayoutManager = LinearLayoutManager(this)
 
         linearLayoutManager.orientation = LinearLayoutManager.HORIZONTAL
 
         rvLastWeather.layoutManager = linearLayoutManager
         rvLastWeather.addItemDecoration(DividerItemDecoration(this, linearLayoutManager.orientation))
+
+        chartMQTT.apply {
+            legend.isEnabled = false
+            isScaleYEnabled = false
+            animateXY(1000, 1000)
+            description.isEnabled = false
+            axisLeft.isEnabled = false
+            axisRight.isEnabled = false
+            xAxis.position = XAxis.XAxisPosition.BOTTOM
+            setVisibleXRangeMaximum(10f)
+            data = LineData()
+        }
         /**************End of set layout***************/
 
         ivRefresh.setOnClickListener { presenter.refreshWeather() }
@@ -63,6 +87,8 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
 
         // Presenter load weather
         presenter.loadWeather()
+
+        presenter.initGraph(chartMQTT)
 
     }
 
@@ -101,6 +127,11 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         tvPressure.visibility = View.VISIBLE
         tvHumidity.startAnimation(fadeIn)
         tvHumidity.visibility = View.VISIBLE
+        divider.visibility = View.VISIBLE
+        tvRealtime.startAnimation(fadeIn)
+        tvRealtime.visibility = View.VISIBLE
+        chartMQTT.startAnimation(fadeIn)
+        chartMQTT.visibility = View.VISIBLE
         llWeatherInfo.startAnimation(moveUp)
         llWeatherInfo.visibility = View.VISIBLE
     }
@@ -122,6 +153,15 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         lastWeather.text = getString(R.string.past_weather)
         rvLastWeather.adapter = MainAdapter(dataWeathers, this)
     }
+
+    override fun onMQTTUpdated(entry: Entry) {
+        val data = chartMQTT.data
+        data.addEntry(entry, 0)
+        data.notifyDataChanged()
+        chartMQTT.notifyDataSetChanged()
+        chartMQTT.moveViewTo((data.getDataSetByIndex(0).entryCount - 1).toFloat(), data.yMax, YAxis.AxisDependency.LEFT)
+    }
+
     /***************************************End of View**********************************/
 
 

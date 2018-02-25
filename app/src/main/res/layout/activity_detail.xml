@@ -11,9 +11,10 @@
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/detail_shown_background"
+        android:background="@color/selectedDetail"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:elevation="1dp">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"

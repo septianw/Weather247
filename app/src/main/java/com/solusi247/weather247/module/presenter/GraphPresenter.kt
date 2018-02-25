@@ -5,7 +5,6 @@ import android.support.v4.content.ContextCompat
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.solusi247.weather247.R
 import com.solusi247.weather247.Weather247
 import com.solusi247.weather247.module.model.ResponseModel
@@ -41,8 +40,7 @@ class GraphPresenter(val view: GraphView) {
             circleRadius = 5f
         }
 
-        val dataSets = arrayListOf<ILineDataSet>(lineDataSet)
-        val lineData = LineData(dataSets)
+        val lineData = LineData(lineDataSet)
 
         view.onGraphTemperature(lineData)
     }
@@ -69,8 +67,7 @@ class GraphPresenter(val view: GraphView) {
             circleRadius = 5f
         }
 
-        val dataSets = arrayListOf<ILineDataSet>(lineDataSet)
-        val lineData = LineData(dataSets)
+        val lineData = LineData(lineDataSet)
 
         view.onGraphPressure(lineData)
     }
@@ -97,8 +94,7 @@ class GraphPresenter(val view: GraphView) {
             circleRadius = 5f
         }
 
-        val dataSets = arrayListOf<ILineDataSet>(lineDataSet)
-        val lineData = LineData(dataSets)
+        val lineData = LineData(lineDataSet)
 
         view.onGraphHumidity(lineData)
 
