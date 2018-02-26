@@ -2,6 +2,7 @@ package com.solusi247.weather247.module.presenter
 
 import android.content.Context
 import android.support.v4.content.ContextCompat
+import android.text.format.DateUtils
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineDataSet
@@ -12,6 +13,7 @@ import com.solusi247.weather247.service.ApiService
 import com.solusi247.weather247.utils.Constant
 import com.solusi247.weather247.utils.Message
 import com.solusi247.weather247.utils.MqttHelper
+import com.solusi247.weather247.utils.changeDateToLong
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -86,7 +88,9 @@ class MainPresenter(val view: MainView) {
                                 if (!it.error) {
                                     view.playAnimationWeatherToday()
                                     // Result successfull
-                                    view.onWeatherToday(it.data[0])
+                                    view.onWeatherToday(it.data
+                                            .filter { DateUtils.isToday(it.date.changeDateToLong()) }
+                                            .first())
 
                                     view.onLastWeather(it.data)
                                 } else {
@@ -122,7 +126,9 @@ class MainPresenter(val view: MainView) {
                                 if (!it.error) {
                                     view.playAnimationWeatherToday()
                                     // Result successfull
-                                    view.onWeatherToday(it.data[0])
+                                    view.onWeatherToday(it.data
+                                            .filter { DateUtils.isToday(it.date.changeDateToLong()) }
+                                            .first())
 
                                     view.onLastWeather(it.data)
                                 } else {

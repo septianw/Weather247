@@ -2,6 +2,7 @@ package com.solusi247.weather247.activity
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.solusi247.weather247.R
@@ -58,9 +59,20 @@ class DetailActivity : AppCompatActivity(), DetailView {
         super.onDestroy()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.detail_menu, menu)
+        return true
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> onBackPressed()
+            R.id.actionDuration -> {
+                supportFragmentManager.beginTransaction()
+                        .remove(supportFragmentManager.findFragmentById(R.id.container))
+                        .commit()
+                presenter.loadDetailWeather(date)
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -84,7 +96,7 @@ class DetailActivity : AppCompatActivity(), DetailView {
         val weatherFragment = WeatherFragment().apply {
             this.dataDetailWeathers = dataDetailWeathers
         }
-        getSupportFragmentManager().beginTransaction()
+        supportFragmentManager.beginTransaction()
                 .replace(R.id.container, weatherFragment)
                 .commit()
     }

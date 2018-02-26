@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.roundToInt
 
+
 fun String.convertToWeatherIcon() = when (this) {
     Weather247.context.getString(R.string.thunderstorm) -> R.drawable.ic_thunderstorm
     Weather247.context.getString(R.string.cloudy) -> R.drawable.ic_cloudy
@@ -52,6 +53,13 @@ fun String.changeFormatDate(): String {
     val date = SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(this)
     val dateString = SimpleDateFormat("dd MMM yyyy", Locale.US).format(date)
     return dateString
+}
+
+fun String.changeDateToLong(): Long {
+    val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.US)
+    val date = sdf.parse(this)
+    val dateLong = date.time
+    return dateLong
 }
 
 fun ImageView.startCustomLoading() {

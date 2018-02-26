@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         val displayMetrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(displayMetrics)
         val params = clWeatherNow.layoutParams
-        params.height = displayMetrics.heightPixels - resources.getInteger(R.integer.arch_height).convertToPixel()
+        params.height = displayMetrics.heightPixels - resources.getInteger(R.integer.arch_height)
         clWeatherNow.layoutParams = params
 
         val linearLayoutManager = LinearLayoutManager(this)
@@ -68,7 +68,6 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         chartMQTT.apply {
             legend.isEnabled = false
             isScaleYEnabled = false
-            animateXY(1000, 1000)
             description.isEnabled = false
             axisLeft.isEnabled = false
             axisRight.isEnabled = false

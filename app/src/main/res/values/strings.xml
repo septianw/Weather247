@@ -24,11 +24,13 @@
     <string name="humidity_text">%s%%</string>
     <string name="pressure_text">%shPa</string>
     <string name="time_text">Time: %s</string>
+    <string name="duration_text">Duration: %s minutes</string>
     <string name="data_text">Data: %s</string>
 
     <string name="past_weather">This week weather info</string>
 
     <!-- List menu in weather247 -->
+    <string name="menu_duration">Duration</string>
     <string name="menu_graphic">Display graph</string>
     <string name="menu_list">Display list</string>
 

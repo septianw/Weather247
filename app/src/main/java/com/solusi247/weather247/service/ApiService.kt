@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.Query
 
 
 interface ApiService {
@@ -14,22 +14,19 @@ interface ApiService {
     @GET("api/weather")
     fun getAllWeather(): Observable<ResponseModel.Weather>
 
-    @GET("api/weather/weather_detail/date/{date}")
-    fun getWeatherDetails(@Path("date") date: String): Observable<ResponseModel.DetailWeather>
+    @GET("api/weather/weather_detail")
+    fun getWeatherDetails(@Query("date") date: String,
+                          @Query("duration") duration: Int?)
+            : Observable<ResponseModel.DetailWeather>
 
     companion object {
 
-        val BASE_URL = "https://stefanusjulianto.000webhostapp.com/"
+        val BASE_URL = "http://stefanusj.ifupnyk2015.org/"
 
         fun create(): ApiService {
-//            val httpClient = OkHttpClient().newBuilder().addInterceptor { chain ->
-//                val request = chain.request().newBuilder().addHeader("Accept", "application/json").build()
-//                return@addInterceptor chain.proceed(request)
-//            }.build()
 
             val retrofit = Retrofit.Builder()
                     .baseUrl(ApiService.BASE_URL)
-//                    .client(httpClient)
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()

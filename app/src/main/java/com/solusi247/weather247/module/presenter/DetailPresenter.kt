@@ -1,6 +1,7 @@
 package com.solusi247.weather247.module.presenter
 
 import android.content.Context
+import com.solusi247.weather247.R
 import com.solusi247.weather247.Weather247
 import com.solusi247.weather247.module.view.DetailView
 import com.solusi247.weather247.service.ApiService
@@ -11,6 +12,9 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 class DetailPresenter(val view: DetailView) {
+
+    val durations = listOf(60, 30, 10)
+    var counter = 0
 
     lateinit var subscription: Disposable
 
@@ -26,7 +30,9 @@ class DetailPresenter(val view: DetailView) {
 
     fun loadDetailWeather(date: String) {
         view.showLoading()
-        subscription = apiService.getWeatherDetails(date)
+        val duration = nextDuration()
+        Message.showToast(context, String.format(context.getString(R.string.duration_text), duration), Message.Type.INFORMATION)
+        subscription = apiService.getWeatherDetails(date, duration)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(
@@ -55,5 +61,10 @@ class DetailPresenter(val view: DetailView) {
                             view.hideLoading()
                         }
                 )
+    }
+
+    fun nextDuration(): Int {
+        counter++
+        return durations.get(counter % durations.size)
     }
 }
