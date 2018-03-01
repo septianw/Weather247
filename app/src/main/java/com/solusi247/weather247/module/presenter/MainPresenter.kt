@@ -20,6 +20,7 @@ import io.reactivex.schedulers.Schedulers
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken
 import org.eclipse.paho.client.mqttv3.MqttCallbackExtended
 import org.eclipse.paho.client.mqttv3.MqttMessage
+import org.json.JSONObject
 
 
 class MainPresenter(val view: MainView) {
@@ -28,17 +29,17 @@ class MainPresenter(val view: MainView) {
 
     val apiService: ApiService
     val context: Context
+    val mqttHelper: MqttHelper
 
     init {
         apiService = ApiService.create()
         context = Weather247.context
+        mqttHelper = MqttHelper(context)
     }
 
     fun interruptService() = subscription.dispose()
 
-    fun initGraph(lineChart: LineChart) {
-
-        val mqttHelper = MqttHelper(context)
+    fun initGraph(lineChart: LineChart, type: String) {
 
         mqttHelper.setCallBack(object : MqttCallbackExtended {
             override fun connectComplete(reconnect: Boolean, serverURI: String?) {
@@ -52,11 +53,11 @@ class MainPresenter(val view: MainView) {
             }
 
             override fun messageArrived(topic: String?, message: MqttMessage?) {
-                val data = lineChart.data
+                val lineData = lineChart.data
 
-                var set = data.getDataSetByIndex(0)
+                var set = lineData.getDataSetByIndex(0)
                 if (set == null) {
-                    set = LineDataSet(null, context.getString(R.string.temperature)).apply {
+                    set = LineDataSet(null, null).apply {
                         color = ContextCompat.getColor(context, R.color.colorGraph)
                         valueTextSize = 12f
                         setDrawFilled(true)
@@ -68,10 +69,12 @@ class MainPresenter(val view: MainView) {
                         circleRadius = 5f
                         isHighlightEnabled = false
                     }
-                    data.addDataSet(set)
+                    lineData.addDataSet(set)
                 }
 
-                view.onMQTTUpdated(Entry(set.entryCount.toFloat(), message.toString().toFloat()))
+                val jsonObject = JSONObject(message.toString())
+                val data = jsonObject.getString(type)
+                view.onMQTTUpdated(Entry(set.entryCount.toFloat(), data.toFloat()))
             }
         })
 

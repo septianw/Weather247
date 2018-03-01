@@ -70,10 +70,12 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
             isScaleYEnabled = false
             description.isEnabled = false
             axisLeft.isEnabled = false
+            xAxis.setDrawLabels(false)
             axisRight.isEnabled = false
             xAxis.position = XAxis.XAxisPosition.BOTTOM
             setVisibleXRangeMaximum(10f)
             data = LineData()
+
         }
         /**************End of set layout***************/
 
@@ -87,7 +89,7 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         // Presenter load weather
         presenter.loadWeather()
 
-        presenter.initGraph(chartMQTT)
+        //presenter.initGraph(chartMQTT, MqttHelper.Type.MQTT_JSON_TEMPERATURE)
 
     }
 
@@ -143,9 +145,18 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         tvTemperature.textAnimationIncrement(dataWeather.temperature, 1000, "\u2103")
         tvPressure.textAnimationIncrement(dataWeather.pressure, 1000, "hPa")
         tvHumidity.textAnimationIncrement(dataWeather.humidity, 1000, "%")
-        tvTemperature.setOnLongClickListener { onTemperatureClicked(); true }
-        tvPressure.setOnLongClickListener { onPressureClicked(); true }
-        tvHumidity.setOnLongClickListener { onHumidityClicked(); true }
+        tvTemperature.apply {
+            setOnClickListener { onTemperatureClicked() }
+            setOnLongClickListener { onTemperatureLongClicked(); true }
+        }
+        tvPressure.apply {
+            setOnClickListener { onPressureClicked() }
+            setOnLongClickListener { onPressureLongClicked(); true }
+        }
+        tvHumidity.apply {
+            setOnClickListener { onHumidityClicked() }
+            setOnLongClickListener { onHumidityLongClicked(); true }
+        }
     }
 
     override fun onLastWeather(dataWeathers: List<ResponseModel.DataWeather>) {
@@ -182,16 +193,34 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
     /***************************************************************************************/
 
     override fun onTemperatureClicked() {
+        chartMQTT.clearValues()
+        tvRealtime.text = String.format(getString(R.string.realtime_text), getString(R.string.temperature), "\u2103")
+        presenter.initGraph(chartMQTT, MqttHelper.Type.MQTT_JSON_TEMPERATURE)
+    }
+
+    override fun onTemperatureLongClicked() {
         val message = String.format(getString(R.string.temperature_now), tvTemperature.text)
         Message.showToast(this, message, Message.Type.INFORMATION)
     }
 
     override fun onPressureClicked() {
+        chartMQTT.clearValues()
+        tvRealtime.text = String.format(getString(R.string.realtime_text), getString(R.string.pressure), "hPa")
+        presenter.initGraph(chartMQTT, MqttHelper.Type.MQTT_JSON_PRESSURE)
+    }
+
+    override fun onPressureLongClicked() {
         val message = String.format(getString(R.string.pressure_now), tvPressure.text)
         Message.showToast(this, message, Message.Type.INFORMATION)
     }
 
     override fun onHumidityClicked() {
+        chartMQTT.clearValues()
+        tvRealtime.text = String.format(getString(R.string.realtime_text), getString(R.string.humidity), "%")
+        presenter.initGraph(chartMQTT, MqttHelper.Type.MQTT_JSON_HUMIDITY)
+    }
+
+    override fun onHumidityLongClicked() {
         val message = String.format(getString(R.string.humidity_now), tvHumidity.text)
         Message.showToast(this, message, Message.Type.INFORMATION)
     }

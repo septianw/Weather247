@@ -14,7 +14,7 @@ import io.reactivex.schedulers.Schedulers
 class DetailPresenter(val view: DetailView) {
 
     val durations = listOf(60, 30, 10)
-    var counter = 0
+    var counter = -1
 
     lateinit var subscription: Disposable
 

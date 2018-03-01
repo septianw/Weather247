@@ -106,9 +106,9 @@ class WeatherFragment : Fragment(), WeatherView, ListWeatherListener, AttrWeathe
         tvTemperature.textAnimationIncrement(dataDetailWeather.temperature, 1000, "\u2103")
         tvPressure.textAnimationIncrement(dataDetailWeather.pressure, 1000, "hPa")
         tvHumidity.textAnimationIncrement(dataDetailWeather.humidity, 1000, "%")
-        tvTemperature.setOnLongClickListener { onTemperatureClicked(); true }
-        tvPressure.setOnLongClickListener { onPressureClicked(); true }
-        tvHumidity.setOnLongClickListener { onHumidityClicked(); true }
+        tvTemperature.setOnLongClickListener { onTemperatureLongClicked(); true }
+        tvPressure.setOnLongClickListener { onPressureLongClicked(); true }
+        tvHumidity.setOnLongClickListener { onHumidityLongClicked(); true }
     }
     /****************************** End of ListWeatherListener ******************************/
 
@@ -117,17 +117,23 @@ class WeatherFragment : Fragment(), WeatherView, ListWeatherListener, AttrWeathe
     /**************************   Attr WeatherFragment Listener   **************************/
     /***************************************************************************************/
 
-    override fun onTemperatureClicked() {
+    override fun onTemperatureClicked() {}
+
+    override fun onTemperatureLongClicked() {
         val message = String.format(getString(R.string.temperature_now), tvTemperature.text)
         Message.showToast(activity!!.baseContext, message, Message.Type.INFORMATION)
     }
 
-    override fun onPressureClicked() {
+    override fun onPressureClicked() {}
+
+    override fun onPressureLongClicked() {
         val message = String.format(getString(R.string.pressure_now), tvPressure.text)
         Message.showToast(activity!!.baseContext, message, Message.Type.INFORMATION)
     }
 
-    override fun onHumidityClicked() {
+    override fun onHumidityClicked() {}
+
+    override fun onHumidityLongClicked() {
         val message = String.format(getString(R.string.humidity_now), tvHumidity.text)
         Message.showToast(activity!!.baseContext, message, Message.Type.INFORMATION)
     }
