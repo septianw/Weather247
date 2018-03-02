@@ -99,7 +99,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvDescription"
-                tools:src="@drawable/ic_thunderstorm_large" />
+                tools:src="@drawable/ic_rainy_large" />
 
             <TextView
                 android:id="@+id/tvTemperature"

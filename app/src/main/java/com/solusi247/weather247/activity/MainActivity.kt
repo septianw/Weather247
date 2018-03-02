@@ -10,7 +10,6 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.solusi247.weather247.R
@@ -20,7 +19,14 @@ import com.solusi247.weather247.listener.LastWeatherListener
 import com.solusi247.weather247.module.model.ResponseModel
 import com.solusi247.weather247.module.presenter.MainPresenter
 import com.solusi247.weather247.module.view.MainView
-import com.solusi247.weather247.utils.*
+import com.solusi247.weather247.utils.Constant
+import com.solusi247.weather247.utils.DateUtils.changeFormatDate
+import com.solusi247.weather247.utils.Message
+import com.solusi247.weather247.utils.MqttHelper
+import com.solusi247.weather247.utils.WeatherUtils.convertToLargeWeatherIcon
+import com.solusi247.weather247.utils.WeatherUtils.endCustomLoading
+import com.solusi247.weather247.utils.WeatherUtils.startCustomLoading
+import com.solusi247.weather247.utils.WeatherUtils.textAnimationIncrement
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.no_connection.*
 import kotlinx.android.synthetic.main.progress_loading.*
@@ -33,7 +39,6 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
     /************************************************************************************/
 
     lateinit var presenter: MainPresenter
-    lateinit var mqttHelper: MqttHelper
 
     lateinit var fadeIn: Animation
     lateinit var moveUp: Animation
@@ -73,9 +78,7 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
             xAxis.setDrawLabels(false)
             axisRight.isEnabled = false
             xAxis.position = XAxis.XAxisPosition.BOTTOM
-            setVisibleXRangeMaximum(10f)
             data = LineData()
-
         }
         /**************End of set layout***************/
 
@@ -86,11 +89,7 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
             noConnection.visibility = View.GONE
         }
 
-        // Presenter load weather
         presenter.loadWeather()
-
-        //presenter.initGraph(chartMQTT, MqttHelper.Type.MQTT_JSON_TEMPERATURE)
-
     }
 
     override fun onDestroy() {
@@ -169,7 +168,7 @@ class MainActivity : AppCompatActivity(), MainView, LastWeatherListener, AttrWea
         data.addEntry(entry, 0)
         data.notifyDataChanged()
         chartMQTT.notifyDataSetChanged()
-        chartMQTT.moveViewTo((data.getDataSetByIndex(0).entryCount - 1).toFloat(), data.yMax, YAxis.AxisDependency.LEFT)
+        chartMQTT.moveViewToX((data.getDataSetByIndex(0).entryCount - 1).toFloat())
     }
 
     /***************************************End of View**********************************/

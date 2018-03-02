@@ -12,9 +12,9 @@ import com.solusi247.weather247.R
 import com.solusi247.weather247.Weather247
 import com.solusi247.weather247.listener.LastWeatherListener
 import com.solusi247.weather247.module.model.ResponseModel
-import com.solusi247.weather247.utils.changeDateToLong
-import com.solusi247.weather247.utils.changeFormatDate
-import com.solusi247.weather247.utils.convertToWhiteWeatherIcon
+import com.solusi247.weather247.utils.DateUtils.changeDateToLong
+import com.solusi247.weather247.utils.DateUtils.changeFormatDate
+import com.solusi247.weather247.utils.WeatherUtils.convertToWhiteWeatherIcon
 import kotlinx.android.synthetic.main.last_weather_item.view.*
 
 class MainAdapter(val dataWeathers: List<ResponseModel.DataWeather>,
@@ -30,7 +30,7 @@ class MainAdapter(val dataWeathers: List<ResponseModel.DataWeather>,
         with(holder) {
             bind(dataWeathers[position])
             if (DateUtils.isToday(dataWeathers[position].date.changeDateToLong())) {
-                itemView.setBackgroundColor(ContextCompat.getColor(Weather247.context, R.color.todayDetail))
+                itemView.setBackgroundColor(ContextCompat.getColor(Weather247.context, R.color.semiTransparent))
             }
         }
     }

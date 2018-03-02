@@ -16,8 +16,8 @@ import com.solusi247.weather247.module.model.ResponseModel
 import com.solusi247.weather247.module.presenter.WeatherPresenter
 import com.solusi247.weather247.module.view.WeatherView
 import com.solusi247.weather247.utils.Message
-import com.solusi247.weather247.utils.convertToWhiteLargeWeatherIcon
-import com.solusi247.weather247.utils.textAnimationIncrement
+import com.solusi247.weather247.utils.WeatherUtils.convertToWhiteLargeWeatherIcon
+import com.solusi247.weather247.utils.WeatherUtils.textAnimationIncrement
 import kotlinx.android.synthetic.main.fragment_weather.*
 
 class WeatherFragment : Fragment(), WeatherView, ListWeatherListener, AttrWeatherListener {

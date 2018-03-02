@@ -12,6 +12,7 @@ import com.solusi247.weather247.activity.MainActivity
 import com.solusi247.weather247.module.model.ResponseModel
 import com.solusi247.weather247.module.presenter.WidgetPresenter
 import com.solusi247.weather247.module.view.WidgetView
+import com.solusi247.weather247.utils.WeatherUtils.convertToWhiteWeatherIcon
 
 
 class WidgetProvider : AppWidgetProvider(), WidgetView {

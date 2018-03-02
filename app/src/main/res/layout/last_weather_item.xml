@@ -15,7 +15,7 @@
         android:layout_width="@dimen/image_normal"
         android:layout_height="@dimen/image_normal"
         android:contentDescription="@string/description_3"
-        tools:src="@drawable/ic_thunderstorm_white" />
+        tools:src="@drawable/ic_rainy_white" />
 
     <TextView
         android:id="@+id/tvDate"

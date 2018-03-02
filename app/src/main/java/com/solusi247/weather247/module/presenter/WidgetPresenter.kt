@@ -1,9 +1,7 @@
 package com.solusi247.weather247.module.presenter
 
-import android.text.format.DateUtils
 import com.solusi247.weather247.module.view.WidgetView
 import com.solusi247.weather247.service.ApiService
-import com.solusi247.weather247.utils.changeDateToLong
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
@@ -16,16 +14,14 @@ class WidgetPresenter(val view: WidgetView) {
     }
 
     fun loadWeatherNow() {
-        apiService.getAllWeather()
+        apiService.getWeatherNow()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                         {
                             try {
                                 if (!it.error)
-                                    view.onDataLoaded(it.data
-                                            .filter { DateUtils.isToday(it.date.changeDateToLong()) }
-                                            .first())
+                                    view.onDataLoaded(it.data.first())
                             } catch (e: Exception) {
                                 e.printStackTrace()
                             }

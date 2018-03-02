@@ -7,27 +7,27 @@ import org.eclipse.paho.client.mqttv3.*
 class MqttHelper(context: Context) {
 
     object Type {
-        val MQTT_JSON_TEMPERATURE = "temperature"
-        val MQTT_JSON_PRESSURE = "pressure"
-        val MQTT_JSON_HUMIDITY = "humidity"
+        val MQTT_JSON_TEMPERATURE = "temp"
+        val MQTT_JSON_PRESSURE = "press"
+        val MQTT_JSON_HUMIDITY = "hum"
     }
 
     var mqttAndroidClient: MqttAndroidClient
 
     // Server URI Cloud MQTT
     // Format: tcp://server.uri:port
-    val SERVER_URI = "tcp://m14.cloudmqtt.com:13021"
+    val SERVER_URI = "tcp://m14.cloudmqtt.com:15337"
 
     // Client ID which this connection should be identified to the server
     val CLIENT_ID = "Weather247Client"
 
     // Topic MQTT
-    val subscriptionTopic = "sensor/+"
+    val subscriptionTopic = "cuaca/sensor/5detik"
 
     // Username instances cloud MQTT
-    val USERNAME = "tebbodbu"
+    val USERNAME = "iyuotxqc"
     // Password instances cloud MQTT
-    val PASSWORD = "pAFFxtjpA9dt"
+    val PASSWORD = "VE0qHSobLx0R"
 
     init {
         mqttAndroidClient = MqttAndroidClient(context, SERVER_URI, CLIENT_ID)

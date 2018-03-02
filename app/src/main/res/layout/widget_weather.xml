@@ -40,7 +40,7 @@
         android:layout_alignParentEnd="true"
         android:layout_below="@id/tvDescription"
         android:contentDescription="@string/description_3"
-        tools:src="@drawable/ic_partly_cloudy_white" />
+        tools:src="@drawable/ic_rainy_white" />
 
     <ProgressBar
         android:id="@+id/pbLoading"

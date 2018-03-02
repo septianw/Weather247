@@ -1,6 +1,7 @@
 package com.solusi247.weather247.adapter
 
 import android.support.constraint.ConstraintLayout
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +12,9 @@ import com.solusi247.weather247.R
 import com.solusi247.weather247.Weather247
 import com.solusi247.weather247.listener.ListWeatherListener
 import com.solusi247.weather247.module.model.ResponseModel
-import com.solusi247.weather247.utils.convertToWeatherIcon
-import com.solusi247.weather247.utils.convertToWhiteWeatherIcon
+import com.solusi247.weather247.utils.DateUtils.isPrediction
+import com.solusi247.weather247.utils.WeatherUtils.convertToWeatherIcon
+import com.solusi247.weather247.utils.WeatherUtils.convertToWhiteWeatherIcon
 import kotlinx.android.synthetic.main.list_weather_item.view.*
 
 class WeatherAdapter(val dataDetailWeathers: List<ResponseModel.DataDetailWeather>,
@@ -37,6 +39,11 @@ class WeatherAdapter(val dataDetailWeathers: List<ResponseModel.DataDetailWeathe
                 listener.onListClicked(dataDetailWeathers.get(position))
                 detailPosition = position
             }
+            if (isPrediction(dataDetailWeathers[position].date, dataDetailWeathers[position].time))
+                itemView.background = ContextCompat.getDrawable(Weather247.context, R.drawable.prediction_clicked_background)
+            else
+                itemView.background = ContextCompat.getDrawable(Weather247.context, R.drawable.weather_clicked_background)
+
         }
     }
 
@@ -65,7 +72,7 @@ class WeatherAdapter(val dataDetailWeathers: List<ResponseModel.DataDetailWeathe
             ivTemperature.setImageResource(
                     if (inverted) R.drawable.ic_temperature_white
                     else R.drawable.ic_temperature)
-            tvTemperature.text = String.format(Weather247.context.getString(R.string.temperature_text, dataDetailWeather.temperature))
+            tvTemperature.text = String.format(Weather247.context.getString(R.string.temperature_text, dataDetailWeather.temperature.toString()))
         }
     }
 }

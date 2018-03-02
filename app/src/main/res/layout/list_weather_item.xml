@@ -5,7 +5,7 @@
     android:id="@+id/listWeather"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/detail_clicked_background"
+    android:background="@drawable/weather_clicked_background"
     android:padding="@dimen/list_weather_margin_horizontal">
 
     <TextView
@@ -49,6 +49,6 @@
         android:layout_marginEnd="@dimen/list_weather_margin_horizontal"
         android:contentDescription="@string/description_3"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:src="@drawable/ic_thunderstorm" />
+        tools:src="@drawable/ic_rainy" />
 
 </android.support.constraint.ConstraintLayout>

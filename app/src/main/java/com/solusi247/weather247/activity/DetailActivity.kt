@@ -11,9 +11,9 @@ import com.solusi247.weather247.module.model.ResponseModel
 import com.solusi247.weather247.module.presenter.DetailPresenter
 import com.solusi247.weather247.module.view.DetailView
 import com.solusi247.weather247.utils.Constant
-import com.solusi247.weather247.utils.changeFormatDate
-import com.solusi247.weather247.utils.endCustomLoading
-import com.solusi247.weather247.utils.startCustomLoading
+import com.solusi247.weather247.utils.DateUtils.changeFormatDate
+import com.solusi247.weather247.utils.WeatherUtils.endCustomLoading
+import com.solusi247.weather247.utils.WeatherUtils.startCustomLoading
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.no_connection.*
 import kotlinx.android.synthetic.main.progress_loading.*

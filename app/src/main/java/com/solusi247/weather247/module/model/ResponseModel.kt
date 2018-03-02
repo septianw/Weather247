@@ -20,9 +20,9 @@ object ResponseModel {
             val day: String,
             val date: String,
             val time: String,
-            var temperature: String,
-            var pressure: String,
-            var humidity: String
+            var temperature: Int,
+            var pressure: Int,
+            var humidity: Int
     )
 
     data class DataDetailWeather(
@@ -31,8 +31,8 @@ object ResponseModel {
             val day: String,
             val date: String,
             val time: String,
-            var temperature: String,
-            var pressure: String,
-            var humidity: String
+            var temperature: Int,
+            var pressure: Int,
+            var humidity: Int
     )
 }

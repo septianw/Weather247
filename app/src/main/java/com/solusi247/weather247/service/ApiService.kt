@@ -11,17 +11,20 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("api/weather")
+    @GET("api/weather.php")
     fun getAllWeather(): Observable<ResponseModel.Weather>
 
-    @GET("api/weather/weather_detail")
+    @GET("api/weather_detail.php")
+    fun getWeatherNow(): Observable<ResponseModel.Weather>
+
+    @GET("api/weather_detail.php")
     fun getWeatherDetails(@Query("date") date: String,
-                          @Query("duration") duration: Int?)
+                          @Query("duration") duration: Int)
             : Observable<ResponseModel.DetailWeather>
 
     companion object {
 
-        val BASE_URL = "http://stefanusj.ifupnyk2015.org/"
+        val BASE_URL = "http://192.168.0.118:80/weather247/"
 
         fun create(): ApiService {
 

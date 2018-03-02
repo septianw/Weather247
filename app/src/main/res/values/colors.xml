@@ -18,9 +18,10 @@
     <color name="backgroundMain">#FFF</color>
 
     <!-- Color selected unselected list detail weather -->
-    <color name="todayDetail">#11000000</color>
+    <color name="semiTransparent">#11000000</color>
     <color name="selectedDetail">#0984E3</color>
-    <color name="unselectedDetail">#FFF</color>
+    <color name="unselectedWeather">#FFF</color>
+    <color name="unselectedPrediction">#11000000</color>
 
     <!-- Text color -->
     <color name="textHome">#45AAF2</color>
