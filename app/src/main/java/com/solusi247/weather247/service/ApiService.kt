@@ -24,7 +24,7 @@ interface ApiService {
 
     companion object {
 
-        val BASE_URL = "http://192.168.0.118:80/weather247/"
+        val BASE_URL = "http://192.168.1.65:80/weather247/"
 
         fun create(): ApiService {
 
