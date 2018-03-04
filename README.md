@@ -23,7 +23,7 @@ This is a list of libraries used in this app
 
 Just set to your IP address or Website provider API, and it's done
 
-**Path: ** [`Weather247/app/src/main/java/com/solusi247/weather247/service/ApiService.kt`](https://github.com/stefanusj/Weather247/blob/master/app/src/main/java/com/solusi247/weather247/service/ApiService.kt)
+**Path:** [`Weather247/app/src/main/java/com/solusi247/weather247/service/ApiService.kt`](https://github.com/stefanusj/Weather247/blob/master/app/src/main/java/com/solusi247/weather247/service/ApiService.kt)
 
 ```Kotlin
 interface ApiService {
