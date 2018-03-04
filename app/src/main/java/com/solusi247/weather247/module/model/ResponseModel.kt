@@ -15,7 +15,7 @@ object ResponseModel {
     )
 
     data class DataWeather(
-            val id: Int,
+            val id: String,
             val weather: String,
             val day: String,
             val date: String,
@@ -26,7 +26,7 @@ object ResponseModel {
     )
 
     data class DataDetailWeather(
-            val id: Int,
+            val id: String,
             val weather: String,
             val day: String,
             val date: String,
